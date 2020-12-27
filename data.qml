@@ -8,7 +8,7 @@ Item {
     property string programName: "WakaWaka"
     property string programVersion: "beta 0.8"
     property bool   deckstopMode: platform===1
-
+    property bool hi: 0
     //настройки
     property alias settings: _settings
     Settings {
