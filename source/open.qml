@@ -110,7 +110,7 @@ Page {
             id: enterKeyComponent
             Control {
                 function accept() {
-                    testObj=JSON.parse(textArea.text)
+                    testObj=JSON.parse(Backend.fromWideString(textArea.text))
                     stackView.push(doCreateComponent.createObject(stackView, {}));
                 }
 

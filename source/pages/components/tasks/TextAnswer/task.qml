@@ -8,7 +8,7 @@ Control {
     function obj() {
         var obj=contentObj
         obj['panswer']=textArea.text
-        obj['score']=obj['basicScore']*Backend.checkTextAnswer(obj['answer'],obj['keywords'])
+        obj['score']=obj['basicScore']*Backend.checkTextAnswer(obj['panswer'],obj['keywords'])
 
         return obj
     }

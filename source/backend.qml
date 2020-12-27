@@ -9,14 +9,18 @@ Item {
         id: backendCpp
     }
     function prepareKeywords(keywords) {
+
         return backendCpp.prepareKeywords(keywords)
     }
 
-    function checkTextAnswer(answer, panswer, keywords) {
-        return backendCpp.compareStrings(answer, panswer, keywords)
+    function checkTextAnswer(panswer, keywords) {
+        return backendCpp.compareStrings(panswer, keywords)
     }
 
-    //toWideString
+    function fromWideString(str) {
+        return backendCpp.base64ToJSON(str)
+    }
+
     function toWideString(str) {
         return backendCpp.jsonToBase64(str)
     }

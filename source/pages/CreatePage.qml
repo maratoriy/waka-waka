@@ -188,8 +188,7 @@ Page  {
                             width: parent.width*0.9
                             anchors.horizontalCenter: parent.horizontalCenter
                             text: Data.names[Data.settings.lang].createpage.buttons.create
-                            onClicked: testLabel.text = JSON.stringify(makeObj())
-                            //onClicked: testLabel.text = Backend.toWideString(JSON.stringify(makeObj()))
+                            onClicked: testLabel.text = Backend.toWideString(JSON.stringify(makeObj()))
                         }
                         RowLayout {
                             width: parent.width
