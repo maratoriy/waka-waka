@@ -1,0 +1,43 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>data.qml</file>
+        <file>home.qml</file>
+        <file>backend.qml</file>
+        <file>pages/components/taskComponents/QuestionContent.qml</file>
+        <file>pages/components/CreateTaskComponent.qml</file>
+        <file>pages/components/TaskComponent.qml</file>
+        <file>pages/CreatePage.qml</file>
+        <file>pages/SettingsPage.qml</file>
+        <file>pages/TestPage.qml</file>
+        <file>pages/ResultsPage.qml</file>
+        <file>pages/components/ResultsTaskComponent.qml</file>
+        <file>pages/components/tasks/TextAnswer/create.qml</file>
+        <file>pages/components/tasks/TextAnswer/result.qml</file>
+        <file>pages/components/tasks/TextAnswer/task.qml</file>
+        <file>pages/UpdatePage.qml</file>
+        <file>create.qml</file>
+        <file>open.qml</file>
+        <file>pages/components/tasks/MultipleVariants/create.qml</file>
+        <file>pages/components/tasks/MultipleVariants/result.qml</file>
+        <file>pages/components/tasks/MultipleVariants/task.qml</file>
+        <file>pages/components/tasks/TableAnswer/create.qml</file>
+        <file>pages/components/tasks/TableAnswer/result.qml</file>
+        <file>pages/components/tasks/TableAnswer/task.qml</file>
+        <file>pages/components/InfoComponent.qml</file>
+        <file>pages/components/tasks/FixedNumber/create.qml</file>
+        <file>pages/components/tasks/FixedNumber/result.qml</file>
+        <file>pages/components/tasks/FixedNumber/task.qml</file>
+        <file>pages/components/UpdateTaskComponent.qml</file>
+        <file>pages/components/tasks/TextAnswer/update.qml</file>
+        <file>pages/components/tasks/TableAnswer/update.qml</file>
+        <file>pages/components/tasks/MultipleVariants/update.qml</file>
+        <file>pages/components/tasks/FixedNumber/update.qml</file>
+        <file>pages/components/tasks/FourVariants/create.qml</file>
+        <file>pages/components/tasks/FourVariants/result.qml</file>
+        <file>pages/components/tasks/FourVariants/task.qml</file>
+        <file>pages/components/controls/MyTextField.qml</file>
+        <file>about.qml</file>
+    </qresource>
+</RCC>
