@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<RCC>
+    <qresource prefix="/">
+        <file alias="main.qml">../src/main.qml</file>
+        <file alias="qtquickcontrols2.conf">../src/qtquickcontrols2.conf</file>
+        <file alias="data.qml">../src/data.qml</file>
+        <file alias="home.qml">../src/home.qml</file>
+        <file alias="backend.qml">../src/backend.qml</file>
+        <file alias="pages/components/taskComponents/QuestionContent.qml">../src/pages/components/taskComponents/QuestionContent.qml</file>
+        <file alias="pages/components/CreateTaskComponent.qml">../src/pages/components/CreateTaskComponent.qml</file>
+        <file alias="pages/components/TaskComponent.qml">../src/pages/components/TaskComponent.qml</file>
+        <file alias="pages/CreatePage.qml">../src/pages/CreatePage.qml</file>
+        <file alias="pages/SettingsPage.qml">../src/pages/SettingsPage.qml</file>
+        <file alias="pages/TestPage.qml">../src/pages/TestPage.qml</file>
+        <file alias="pages/ResultsPage.qml">../src/pages/ResultsPage.qml</file>
+        <file alias="pages/components/ResultsTaskComponent.qml">../src/pages/components/ResultsTaskComponent.qml</file>
+        <file alias="pages/components/tasks/TextAnswer/create.qml">../src/pages/components/tasks/TextAnswer/create.qml</file>
+        <file alias="pages/components/tasks/TextAnswer/result.qml">../src/pages/components/tasks/TextAnswer/result.qml</file>
+        <file alias="pages/components/tasks/TextAnswer/task.qml">../src/pages/components/tasks/TextAnswer/task.qml</file>
+        <file alias="pages/UpdatePage.qml">../src/pages/UpdatePage.qml</file>
+        <file alias="create.qml">../src/create.qml</file>
+        <file alias="open.qml">../src/open.qml</file>
+        <file alias="pages/components/tasks/MultipleVariants/create.qml">../src/pages/components/tasks/MultipleVariants/create.qml</file>
+        <file alias="pages/components/tasks/MultipleVariants/result.qml">../src/pages/components/tasks/MultipleVariants/result.qml</file>
+        <file alias="pages/components/tasks/MultipleVariants/task.qml">../src/pages/components/tasks/MultipleVariants/task.qml</file>
+        <file alias="pages/components/tasks/TableAnswer/create.qml">../src/pages/components/tasks/TableAnswer/create.qml</file>
+        <file alias="pages/components/tasks/TableAnswer/result.qml">../src/pages/components/tasks/TableAnswer/result.qml</file>
+        <file alias="pages/components/tasks/TableAnswer/task.qml">../src/pages/components/tasks/TableAnswer/task.qml</file>
+        <file alias="pages/components/InfoComponent.qml">../src/pages/components/InfoComponent.qml</file>
+        <file alias="pages/components/tasks/FixedNumber/create.qml">../src/pages/components/tasks/FixedNumber/create.qml</file>
+        <file alias="pages/components/tasks/FixedNumber/result.qml">../src/pages/components/tasks/FixedNumber/result.qml</file>
+        <file alias="pages/components/tasks/FixedNumber/task.qml">../src/pages/components/tasks/FixedNumber/task.qml</file>
+        <file alias="pages/components/UpdateTaskComponent.qml">../src/pages/components/UpdateTaskComponent.qml</file>
+        <file alias="pages/components/tasks/TextAnswer/update.qml">../src/pages/components/tasks/TextAnswer/update.qml</file>
+        <file alias="pages/components/tasks/TableAnswer/update.qml">../src/pages/components/tasks/TableAnswer/update.qml</file>
+        <file alias="pages/components/tasks/MultipleVariants/update.qml">../src/pages/components/tasks/MultipleVariants/update.qml</file>
+        <file alias="pages/components/tasks/FixedNumber/update.qml">../src/pages/components/tasks/FixedNumber/update.qml</file>
+        <file alias="pages/components/tasks/FourVariants/create.qml">../src/pages/components/tasks/FourVariants/create.qml</file>
+        <file alias="pages/components/tasks/FourVariants/result.qml">../src/pages/components/tasks/FourVariants/result.qml</file>
+        <file alias="pages/components/tasks/FourVariants/task.qml">../src/pages/components/tasks/FourVariants/task.qml</file>
+        <file alias="pages/components/controls/MyTextField.qml">../src/pages/components/controls/MyTextField.qml</file>
+        <file alias="about.qml">../src/about.qml</file>
+    </qresource>
+</RCC>
