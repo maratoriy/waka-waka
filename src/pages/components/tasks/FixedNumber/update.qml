@@ -10,9 +10,9 @@ Control {
     function init(contentObj) {
         decSlider.value=contentObj['decimals']
         inacSlider.value=contentObj['inac']
-        lAnswer.text=contentObj['lAnswer']
+        //lAnswer.text=contentObj['lAnswer']
         answerInput.text=contentObj['answer']
-        rAnswer.text=contentObj['rAnswer']
+        //rAnswer.text=contentObj['rAnswer']
     }
     function reset() {
         answerInput.text=''
@@ -87,6 +87,7 @@ Control {
             anchors.horizontalCenter: parent.horizontalCenter
             MyTextField {
                 id: lAnswer
+                padding: 20
                 text: (answerInput.answer*(1-inacSlider.value/10000)).toFixed(decSlider.value)
                 readOnly: true
             }
@@ -97,18 +98,20 @@ Control {
             MyTextField {
                 padding: 20
                 id: answerInput
-                property double answer: parseFloat(text)
+                property var answer: parseFloat(text.replace(',', '.'))
                 placeholderText: Data.names[Data.settings.lang].tasks['FixedNumber'].create.answerplace
                 validator: DoubleValidator {
                     decimals: decSlider.value
                 }
                 text: '0'
+                selectByMouse: true
             }
             Label {
                 text: '<='
             }
             MyTextField {
                 id: rAnswer
+                padding: 20
                 text: (answerInput.answer*(1+inacSlider.value/10000)).toFixed(decSlider.value)
                 readOnly: true
             }
