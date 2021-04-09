@@ -5,6 +5,7 @@ import Data 1.0
 
 ListView {
     id: root
+    boundsBehavior: ListView.StopAtBounds
     property bool menu: false
     clip: true
     ScrollBar.vertical: ScrollBar { id: scrollBar}

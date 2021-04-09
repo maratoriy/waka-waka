@@ -32,17 +32,24 @@ Control {
             property alias val: cb.checked
             clip: true
             property alias name: ta.text
+
             CheckBox {
                 id: cb;
                 //anchors.left: parent.left
             }
-            TextArea {
-                id: ta;
+            Flickable {
                 width: gridView.cellWidth-cb.width-deleteVarBut.width
-                //anchors.right: parent.right;
-                wrapMode: TextArea.Wrap;
-                placeholderText: Data.names[Data.settings.lang].tasks['MultipleVariants'].create['var']
-                selectByMouse: true
+                height: 80
+                ScrollBar.vertical: ScrollBar { id: sb; policy: ScrollBar.AlwaysOn}
+                TextArea.flickable: TextArea {
+                    id: ta;
+                    rightInset: sb.width+5
+                    rightPadding: sb.width+5
+                    //anchors.right: parent.right;
+                    wrapMode: TextArea.Wrap;
+                    placeholderText: Data.names[Data.settings.lang].tasks['MultipleVariants'].create['var']
+                    selectByMouse: true
+                }
             }
             ToolButton {
                 id: deleteVarBut
@@ -77,7 +84,8 @@ Control {
     GridView {
         id: gridView
         ScrollBar.vertical: ScrollBar {
-
+            id: sb
+            policy: ScrollBar.AlwaysOn
         }
         header: ToolButton {
             text: Data.names[Data.settings.lang].tasks['MultipleVariants'].create.addvar
@@ -86,7 +94,7 @@ Control {
                 radius: 5
                 color: Data.styles.actions[root.Material.theme]
             }
-            width: parent.width
+            width: parent.width-sb.width-5
             onClicked: listModel.append({ val: false, name: ' ', ind: listModel.count})
         }
         anchors.fill: parent

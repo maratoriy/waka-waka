@@ -18,19 +18,15 @@ ApplicationWindow {
     font.family: robotoMedium.name
     Material.theme: settingsLoader.item.theme
     visible: true
+
     Component.onCompleted: {
         setLightMode(Data.settings.theme)
-        font.pointSize = Data.settings.fontPointSize
+        font.pointSize = Data.settings.fontsize
         visibility     = (Data.settings.visibility!==3&&Data.settings.visibility!==0) ? Data.settings.visibility : 4
-    }
-    onClosing: {
-        Data.settings.theme         = Material.theme
-        Data.settings.fontPointSize = font.pointSize
-        Data.settings.visibility    = visibility
     }
     flags: Qt.Window | Qt.CustomizeWindowHint
     header: ToolBar {
-        height: Screen.height*0.07
+        height: Screen.height*0.09
         MouseArea {
             id: dragArea
             enabled: Data.deckstopMode && root.visibility<4
@@ -161,7 +157,7 @@ ApplicationWindow {
                         width: parent.width*0.8
                         height: width
                         anchors.centerIn: parent
-                        //source: "qrc:/images/icons/logo.png"
+                        source: "qrc:/images/icons/appicon.png"
                         sourceSize.width: width
                         sourceSize.height: height
                     }
@@ -231,7 +227,7 @@ ApplicationWindow {
     }
     Drawer {
         id: settingsDrawer
-        height: parent.height*0.2
+        height: parent.height*0.3
         width: parent.width
         edge: Qt.BottomEdge
         Loader {
@@ -249,10 +245,17 @@ ApplicationWindow {
     Component {
         id: settingsComponent
         SettingsPage {
-            onThemeChanged: root.setLightMode(theme), Data.settings.theme=theme
-            onVisibilityChanged: root.visibility=visibility
+            onThemeChanged: { root.setLightMode(theme); Data.settings.theme=theme }
+            onVisibilityChanged: { root.visibility=visibility; Data.settings.visibility=visibility }
             property bool langcb: false
             onLangChanged: langcb? Data.settings.lang=lang : langcb=true
+            property bool fontsizecb: false
+            onFontsizeChanged: {
+                if(fontsizecb) {
+                       root.font.pointSize=fontsize
+                       Data.settings.fontsize=fontsize
+                } else fontsizecb=true
+            }
         }
     }
     FontLoader { id: robotoLight; source: Data.urls.fonts.Roboto.light }

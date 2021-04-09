@@ -159,6 +159,12 @@ namespace _0x5f__home_qml {
         reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
     };
 }
+namespace _pages_components_taskComponents_SymbolsKeyboard_qml { 
+    extern const unsigned char qmlData[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
+    };
+}
 namespace _pages_components_tasks_FourVariants_result_qml { 
     extern const unsigned char qmlData[];
     const QQmlPrivate::CachedQmlUnit unit = {
@@ -271,6 +277,7 @@ Registry::Registry() {
         resourcePathToCachedUnit.insert(QStringLiteral("/pages/CreatePage.qml"), &QmlCacheGeneratedCode::_pages_CreatePage_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/controls/MyTextField.qml"), &QmlCacheGeneratedCode::_pages_components_controls_MyTextField_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/home.qml"), &QmlCacheGeneratedCode::_0x5f__home_qml::unit);
+        resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/taskComponents/SymbolsKeyboard.qml"), &QmlCacheGeneratedCode::_pages_components_taskComponents_SymbolsKeyboard_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/tasks/FourVariants/result.qml"), &QmlCacheGeneratedCode::_pages_components_tasks_FourVariants_result_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/tasks/FourVariants/task.qml"), &QmlCacheGeneratedCode::_pages_components_tasks_FourVariants_task_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/tasks/FourVariants/create.qml"), &QmlCacheGeneratedCode::_pages_components_tasks_FourVariants_create_qml::unit);

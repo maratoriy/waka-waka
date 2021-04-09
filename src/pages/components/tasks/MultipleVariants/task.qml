@@ -33,13 +33,21 @@ Control {
                 id: cb;
                 //anchors.left: parent.left
             }
-            TextArea {
-                id: ta;
-                text: name
+            Flickable {
                 width: gridView.cellWidth-cb.width
-                //anchors.right: parent.right;
-                wrapMode: TextArea.Wrap;
-                readOnly: true
+                height: 80
+                ScrollBar.vertical: ScrollBar { id: sb; policy: ScrollBar.AlwaysOn}
+                TextArea.flickable: TextArea {
+                    id: ta;
+                    rightInset: sb.width+5
+                    rightPadding: sb.width+5
+                    //anchors.right: parent.right;
+                    wrapMode: TextArea.Wrap;
+                    text: name
+                    readOnly: true
+                    placeholderText: Data.names[Data.settings.lang].tasks['MultipleVariants'].create['var']
+                    selectByMouse: true
+                }
             }
         }
     }
@@ -50,7 +58,7 @@ Control {
     GridView {
         id: gridView
         ScrollBar.vertical: ScrollBar {
-
+            policy: ScrollBar.AlwaysOn
         }
         anchors.fill: parent
         cellWidth: width/2

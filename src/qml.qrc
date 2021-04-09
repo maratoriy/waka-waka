@@ -39,5 +39,6 @@
         <file>pages/components/tasks/FourVariants/task.qml</file>
         <file>pages/components/controls/MyTextField.qml</file>
         <file>about.qml</file>
+        <file>pages/components/taskComponents/SymbolsKeyboard.qml</file>
     </qresource>
 </RCC>

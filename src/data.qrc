@@ -49,5 +49,7 @@
         <file>images/help/TextAnswer/create.png</file>
         <file>images/help/MultipleVariants/create.png</file>
         <file>images/help/TableAnswer/create.png</file>
+        <file>images/icons/appicon.ico</file>
+        <file>images/icons/appicon.png</file>
     </qresource>
 </RCC>

@@ -14,7 +14,7 @@ Item {
         id: _settings
         fileName: "settings"
         property int theme: themes.lightTheme
-        property int fontPointSize: 12
+        property int fontsize: 12
         property int visibility: 4
         property var lang: 'ru'
     }
@@ -38,6 +38,8 @@ Item {
             '1' : 'white'
         }
     }
+
+    property var fontsizelist: [10, 12, 14, 16]
 
     //список языков
     property var langList: [
@@ -154,7 +156,8 @@ Item {
             'settings': {
                 'fullscreen': 'Fullscreen',
                 'darkmode': 'Dark mode',
-                'lang': 'Language'
+                'lang': 'Language',
+                'fontsize': 'Font size'
             },
             'tasks': {
                 'TextAnswer': {
@@ -269,7 +272,8 @@ Item {
             'settings': {
                 'fullscreen': 'На полный экран',
                 'darkmode': 'Темная тема',
-                'lang': 'Язык'
+                'lang': 'Язык',
+                'fontsize': 'Размер шрифта'
             },
             'tasks': {
                 'TextAnswer': {

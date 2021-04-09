@@ -38,6 +38,7 @@ debug/pages_components_tasks_MultipleVariants_update_qml.o
 debug/pages_components_tasks_MultipleVariants_task_qml.o
 debug/pages_components_tasks_MultipleVariants_create_qml.o
 debug/pages_components_controls_MyTextField_qml.o
+debug/pages_components_taskComponents_SymbolsKeyboard_qml.o
 debug/pages_components_taskComponents_QuestionContent_qml.o
 debug/qmlcache_loader.o
 debug/qrc_qml_qmlcache.o

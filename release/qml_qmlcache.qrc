@@ -40,5 +40,6 @@
         <file alias="pages/components/tasks/FourVariants/task.qml">../src/pages/components/tasks/FourVariants/task.qml</file>
         <file alias="pages/components/controls/MyTextField.qml">../src/pages/components/controls/MyTextField.qml</file>
         <file alias="about.qml">../src/about.qml</file>
+        <file alias="pages/components/taskComponents/SymbolsKeyboard.qml">../src/pages/components/taskComponents/SymbolsKeyboard.qml</file>
     </qresource>
 </RCC>

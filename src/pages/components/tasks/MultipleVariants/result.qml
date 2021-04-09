@@ -30,14 +30,22 @@ Control {
                 enabled: false
                 //anchors.left: parent.left
             }
-            TextArea {
-                id: ta;
-                text: name
-                color: contentObj['answer'][ind]==='1' ? "green" : "black"
+            Flickable {
                 width: gridView.cellWidth-cb.width
-                //anchors.right: parent.right;
-                wrapMode: TextArea.Wrap;
-                readOnly: true
+                height: 80
+                ScrollBar.vertical: ScrollBar { id: sb; policy: ScrollBar.AlwaysOn}
+                TextArea.flickable: TextArea {
+                    id: ta;
+                    color: contentObj['answer'][ind]==='1' ? "green" : "black"
+                    rightInset: sb.width+5
+                    rightPadding: sb.width+5
+                    //anchors.right: parent.right;
+                    wrapMode: TextArea.Wrap;
+                    text: name
+                    readOnly: true
+                    placeholderText: Data.names[Data.settings.lang].tasks['MultipleVariants'].create['var']
+                    selectByMouse: true
+                }
             }
         }
     }

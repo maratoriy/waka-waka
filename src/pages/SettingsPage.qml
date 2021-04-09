@@ -7,6 +7,7 @@ Page {
     property int visibility: visibilityDelegate.checked ? 5 : 4
     property int theme: themeDelegate.position===1 ? Data.themes.darkTheme : Data.themes.lightTheme
     property string lang: langcb.currentText
+    property int fontsize: fontsizecb.currentText
     Column {
         anchors.fill: parent
         SwitchDelegate {
@@ -30,6 +31,17 @@ Page {
                 anchors.right: parent.right
                 model: Data.langList
                 Component.onCompleted: currentIndex=Data.langList.indexOf(Data.settings.lang)
+            }
+        }
+        ItemDelegate {
+            width: parent.width
+            text: Data.names[Data.settings.lang].settings['fontsize']
+            onClicked: fontsizecb.popup.visible ? fontsizecb.popup.close() : fontsizecb.popup.open()
+            ComboBox {
+                id: fontsizecb
+                anchors.right: parent.right
+                model: Data.fontsizelist
+                Component.onCompleted: currentIndex=Data.fontsizelist.indexOf(Data.settings.fontsize)
             }
         }
     }

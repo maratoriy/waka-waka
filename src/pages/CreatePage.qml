@@ -4,6 +4,7 @@ import QtQuick.Controls.Material 2.14
 import QtQuick.Layouts 1.12
 
 import "components"
+import "components/taskComponents"
 import Data 1.0
 import Backend 1.0
 
@@ -280,78 +281,21 @@ Page  {
             }
         }
     }
-    Control {
+
+    SymbolsKeyboard {
         id: dialog
         width: Math.max(parent.width,parent.height)*0.2
         height: Math.min(parent.height,parent.width)*0.5
         visible: false
-        background: Rectangle {
-            //radius: 5
-            color: root.Material.theme===Material.Light ? 'white' : '#303030'
+        function setText(symb) {
+            for(var i=0;i<swipeView.contentItem.children.length;i++) {
+                //if(swipeView.contentItem.children[i].focus) root.contentItem.children[i].text+=symb;
+               console.log(swipeView.contentItem.children[i].objectName)
+            }
+            if(swipeView.children.length!==0) setText(symb);
         }
-        Column {
-            anchors.fill: parent
-            Rectangle {
-                height: 30
-                //radius: 5
-                width: parent.width
-                color: Data.styles.actions[root.Material.theme]
-                MouseArea {
-                    id: dragArea
-                    anchors.fill: parent
-                    property int previousX
-                    property int previousY
-                    onPressed: {
-                        previousX = mouseX
-                        previousY = mouseY
-                    }
-                    onMouseXChanged: {
-                        var dx = mouseX - previousX
-                        dialog.x=(dialog.x + dx)
-                    }
-                    onMouseYChanged: {
-                        var dy = mouseY - previousY
-                        dialog.y=(dialog.y + dy)
-                    }
-                }
-                ToolButton {
-                    width: height
-                    height: parent.height
-                    anchors.right: parent.right
-                    icon.color: "white"
-                    icon.source: Data.urls.icons["close"]
-                    onClicked: dialog.visible=false
-                }
-            }
-            Control {
-                width: parent.width
-                height: parent.height-30
-                GridView {
-                    anchors.fill: parent
-                    id: gridView
-                    clip: true
-                    model: Data.symbols
-                    cellHeight: 30
-                    cellWidth: 30
-                    delegate: Control {
-                        width: gridView.cellWidth
-                        height: gridView.cellHeight
-                        Layout.alignment: Qt.AlignCenter
-                        ToolButton {
-                            contentItem: Text {
-                                text: modelData
-                                color: root.Material.theme===Material.Dark ? (parent.down ? "#AFAFAF" : "#FFFFFF") : (parent.down ? "grey" : "#000000")
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
-                                font.pointSize: root.font.pointSize*1.2
-                            }
-
-                            anchors.centerIn: parent
-                            onClicked: Backend.clipboard.setText(modelData)
-                        }
-                    }
-                }
-            }
+        onCurSymbChanged: {
+            setText(curSymb);
         }
     }
     FontLoader { id: electronicaNormal; source: Data.urls.fonts.Electronica.normal }

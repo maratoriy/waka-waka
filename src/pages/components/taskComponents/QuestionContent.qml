@@ -9,6 +9,7 @@ Control {
     function init() {
         label.text=contentObj['text']
     }
+
     Flickable {
                 id: flick
                 anchors.fill: parent
