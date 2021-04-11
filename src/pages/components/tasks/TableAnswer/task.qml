@@ -6,6 +6,7 @@ import QtQml.Models 2.15
 
 Control {
     property var contentObj
+    height: listView.height
     function init() {
         for(let i=0;i<contentObj['number'];i++) {
             let nod=contentObj['nods']['nod'+i]
@@ -18,22 +19,26 @@ Control {
             listView.itemAtIndex(i).subListMod.append({subInd: 0})
         }
     }
-    function obj() {
-        var obj=contentObj
+    function getObj() {
         let subObj={}
         for(let i=0;i<listView.count;i++) {
-            let nod={}
-            nod['name']=listView.itemAtIndex(i).nod
-            let subNods={}
-            subNods['number']=listView.itemAtIndex(i).subList.count
+            let subNods={
+                'number': listView.itemAtIndex(i).subList.count
+            }
             for(let j=0;j<listView.itemAtIndex(i).subList.count;j++) {
                 subNods['subNod'+j]=listView.itemAtIndex(i).subList.itemAtIndex(j).text
             }
-            nod['subNods']=subNods
+            let nod={
+                'name': listView.itemAtIndex(i).nod,
+                'subNods': subNods
+            }
             subObj['nod'+i]=nod
         }
-        obj['pnods']=subObj
-        obj['score']=Math.round(obj['basicScore']*answer(obj))
+        var obj= Object.assign({}, contentObj, {
+            'number': listView.count,
+            'pnods': subObj
+        })
+        obj['score']=(obj['basicScore']*answer(obj)).toFixed(1)
         return obj
     }
     function answer(obj) {
@@ -55,10 +60,11 @@ Control {
 
     ListView {
         id: listView
-        anchors.fill: parent
+        width: parent.width
         model: listModel
         clip: true
-        ScrollBar.vertical: ScrollBar { id: scrollBar }
+        height: contentItem.childrenRect.height
+        ScrollBar.vertical: ScrollBar { id: scrollBar; width: 5 }
 //        header: ToolButton {
 //            text: qsTr("Add row")
 //            Material.theme: Material.Dark
@@ -73,7 +79,7 @@ Control {
         spacing: 10
         delegate: Row {
             width: listView.width
-            height: listView.height/4
+            height: 60
             topPadding: height/10
             property alias subList: subListView
             property alias subListMod: subListModel

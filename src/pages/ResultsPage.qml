@@ -9,18 +9,18 @@ import Backend 1.0
 
 Page {
     id: root
-    property var testObj
+    property var contentObj
     function init() {
         swipeView.addItem(headerComponent.createObject(swipeView, {}))
-        for(let key in testObj['taskList']) {
+        for(let key in contentObj['taskList']) {
             swipeView.addItem(resultsTaskComponent.createObject(swipeView, {}))
-            swipeView.itemAt(swipeView.count-1).init(testObj['taskList'][key])
+            swipeView.itemAt(swipeView.count-1).init(contentObj['taskList'][key])
         }
     }
 
     Control {
         width: parent.width*0.90
-        height: parent.height*0.90
+        height: parent.height*0.95
         anchors.centerIn: parent
         Control {
             clip: true
@@ -100,18 +100,18 @@ Page {
             Label {
                 anchors.top: parent.top
                 text: Backend.strings.createStringFromTemplate(Data.names[Data.settings.lang].resultspage.headercomponent.infotext,
-                                                               testObj['name'],
-                                                               testObj['pupil'],
-                                                               new Date(testObj['ptime']*1000).toLocaleTimeString(Qt.locale(), "mm:" + "ss"),
-                                                               testObj['score'],
-                                                               testObj['basicScore'],
-                                                               Math.round(100*testObj['score']/testObj['basicScore']))
-//                text: `Name: ${testObj['name']}\n`+
-//                      `Pupil: ${testObj['pupil']}\n`+
-//                      `Time: ${new Date(testObj['ptime']*1000).toLocaleTimeString(Qt.locale(), "mm:" + "ss")}
-//                      Score: ${testObj['score']}
-//                      BasicScore: ${testObj['basicScore']}
-//                      Percentage: ${Math.round(100*testObj['score']/testObj['basicScore'])}`
+                                                               contentObj['name'],
+                                                               contentObj['pupil'],
+                                                               new Date(contentObj['ptime']*1000).toLocaleTimeString(Qt.locale(), "mm:" + "ss"),
+                                                               contentObj['score'],
+                                                               contentObj['basicScore'],
+                                                               Math.round(100*contentObj['score']/contentObj['basicScore']))
+//                text: `Name: ${contentObj['name']}\n`+
+//                      `Pupil: ${contentObj['pupil']}\n`+
+//                      `Time: ${new Date(contentObj['ptime']*1000).toLocaleTimeString(Qt.locale(), "mm:" + "ss")}
+//                      Score: ${contentObj['score']}
+//                      BasicScore: ${contentObj['basicScore']}
+//                      Percentage: ${Math.round(100*contentObj['score']/contentObj['basicScore'])}`
             }
         }
     }

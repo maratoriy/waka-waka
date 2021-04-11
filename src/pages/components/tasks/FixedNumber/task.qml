@@ -13,20 +13,21 @@ Control {
         valid.decimals= contentObj['decimals']
     }
     function reset() {
+        answerArea.clear();
     }
-    function obj() {
-        var obj=contentObj
-        obj['panswer']=parseFloat(answerArea.text)
-        obj['score']=obj['basicScore']*(check())
+    function getObj() {
+        var obj= Object.assign({}, contentObj, {
+         'panswer': parseFloat(answerArea.text),
+         'score': contentObj['basicScore']*
+                    ((contentObj['lAnswer']<=answerArea.answer)
+                   &&(contentObj['rAnswer']>=answerArea.answer)
+                     )
+        })
         return obj
     }
-    function check() {
-        return (contentObj['lAnswer']<=answerArea.answer)&&(contentObj['rAnswer']>=answerArea.answer)
-    }
-
+    height: childrenRect.height
     ColumnLayout {
         width: parent.width
-        anchors.bottom: parent.bottom
         Label {
             Layout.alignment: Qt.AlignRight
             //readOnly: true

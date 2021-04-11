@@ -8,10 +8,11 @@ ListView {
     boundsBehavior: ListView.StopAtBounds
     property bool menu: false
     clip: true
-    ScrollBar.vertical: ScrollBar { id: scrollBar}
-    delegate: Control {
+    ScrollIndicator.vertical: ScrollIndicator { id: scrollBar}
+    height: contentItem.childrenRect.height
+    delegate: Column {
         width: root.width-scrollBar.width
-        height: 50+label.paintedHeight*label.visible+ (image.paintedHeight+40+itemDelegate.height/4)*image.visible
+        height: column.visible ? childrenRect.height : itemDelegate.height
         ItemDelegate {
             id: itemDelegate
             width: parent.width
@@ -20,35 +21,32 @@ ListView {
             onClicked: {
                 column.visible=!column.visible
             }
-            Column {
-                id: column
-                anchors.topMargin: itemDelegate.height/4
-                anchors.top: itemDelegate.bottom
-                width: parent.width
-                visible: false
-                Label {
-                    id: label
-                    width: itemDelegate.parent.width
-                    leftPadding: 20
-                    font.pointSize: Qt.application.font.pointSize*1.5
-                    wrapMode: Label.Wrap
-                    text: qsTr(modelData[Data.settings.lang].text)
-                }
-                Image {
-                    id: image
-                    anchors.topMargin: 40
-                    width: menu ? parent.width : parent.width*modelData.image.width
-                    height: sourceSize.height/sourceSize.width*width
-                    source: modelData.image.source
-                }
+        }
+        Column {
+            id: column
+            height: childrenRect.height
+            width: parent.width
+            visible: false
+            Label {
+                id: label
+                width: itemDelegate.parent.width
+                leftPadding: 20
+                font.pointSize: Qt.application.font.pointSize*1.5
+                wrapMode: Label.Wrap
+                text: qsTr(modelData[Data.settings.lang].text)
             }
-            Rectangle {
-                width: parent.width*0.98
-                height: 1
-                anchors.top: parent.top
-                anchors.horizontalCenter: parent.horizontalCenter
-                color: Data.styles.actions[root.Material.theme]
+            Image {
+                id: image
+                anchors.topMargin: 40
+                width: menu ? parent.width : parent.width*modelData.image.width
+                height: sourceSize.height/sourceSize.width*width
+                source: modelData.image.source
             }
+        }
+        Rectangle {
+            width: parent.width
+            height: 1
+            color: menu ? 'grey' : Data.styles.actions[root.Material.theme]
         }
     }
 }

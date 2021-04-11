@@ -7,9 +7,16 @@ Page {
     property int visibility: visibilityDelegate.checked ? 5 : 4
     property int theme: themeDelegate.position===1 ? Data.themes.darkTheme : Data.themes.lightTheme
     property string lang: langcb.currentText
-    property int fontsize: fontsizecb.currentText
-    Column {
+    property int fontsize: fontsizecb.value
+    height: flick.height
+    Flickable {
+        id: flick
         anchors.fill: parent
+        height: contentItem.childrenRect.height
+        ScrollIndicator.vertical: ScrollIndicator { }
+    Column {
+        height: childrenRect.height*4
+        width: parent.width
         SwitchDelegate {
             id: themeDelegate
             width: parent.width
@@ -36,14 +43,14 @@ Page {
         ItemDelegate {
             width: parent.width
             text: Data.names[Data.settings.lang].settings['fontsize']
-            onClicked: fontsizecb.popup.visible ? fontsizecb.popup.close() : fontsizecb.popup.open()
-            ComboBox {
+
+            SpinBox {
                 id: fontsizecb
                 anchors.right: parent.right
-                model: Data.fontsizelist
-                Component.onCompleted: currentIndex=Data.fontsizelist.indexOf(Data.settings.fontsize)
+                from: 10; to: 16
+                Component.onCompleted: value=Data.settings.fontsize
             }
         }
     }
-
+    }
 }

@@ -7,87 +7,97 @@ import "../../controls"
 
 Control {
     id: root
-    function init() {
-
+    function init(contentObj) {
+        decSlider.value=contentObj['decimals']
+        inacSlider.value=contentObj['inac']
+        answerInput.text=contentObj['answer']
     }
     function reset() {
         answerInput.text=''
         inacSlider.value=0
         decInput.value=0
     }
-    function obj() {
-        var obj={}
-        obj['decimals']=Math.round(decSlider.value)
-        obj['inac']=inacSlider.value
-        obj['lAnswer']=parseFloat(lAnswer.text)
-        obj['answer']=answerInput.answer
-        obj['rAnswer']=parseFloat(rAnswer.text)
+    function getObj() {
+        var obj={
+            'decimals': Math.round(decSlider.value),
+            'inac': inacSlider.value,
+            'lAnswer': parseFloat(lAnswer.text),
+            'answer': answerInput.answer,
+            'rAnswer': parseFloat(rAnswer.text)
+        }
         return obj
     }
     Column {
         anchors.fill: parent
-        RowLayout {
+        Control {
             width: parent.width
-            MyTextField {
-                padding: 10
-                readOnly: true
-                text: Data.names[Data.settings.lang].tasks['FixedNumber'].create.decimalsplace
+            height: childrenRect.height
+            Label {
+                anchors.left: parent.left
+                text: Data.names[Data.settings.lang].tasks['FixedNumber'].create.decimalsplace+decSlider.value.toFixed(0)
             }
             Slider {
                 id: decSlider
-                Layout.fillWidth: true
+                width: parent.width*0.7
+                anchors.right: parent.right
+                Layout.alignment: Qt.AlignRight
                 from: 0
                 to: 9
             }
-            MyTextField {
-                padding: 10
-                id: decInput
-                text: dec
-                property int dec: decSlider.value
-                onFocusChanged: decSlider.value=text
-                inputMask: '9'
-                //placeholderText: qsTr("Decs after point")
-            }
         }
-        RowLayout {
+        Control {
             width: parent.width
-            MyTextField {
-                padding: 10
-                readOnly: true
-                text: Data.names[Data.settings.lang].tasks['FixedNumber'].create.inacplace
+            height: childrenRect.height
+            Label {
+                anchors.left: parent.left
+                text: Data.names[Data.settings.lang].tasks['FixedNumber'].create.inacplace+(inacSlider.value/100).toFixed(3)
             }
             Slider {
                 id: inacSlider
-                Layout.fillWidth: true
+                width: parent.width*0.7
+                anchors.right: parent.right
                 from: 0
                 stepSize: 1
                 to: 1000
             }
-            MyTextField {
-                padding: 10
-                id: inacInput
-                property var inac: inacSlider.value
-                text: inac/100
-                onFocusChanged: inacSlider.value=(text-'0')*1000
-                DoubleValidator {
-                    decimals: 3
-                }
-            }
         }
         RowLayout {
-            anchors.horizontalCenter: parent.horizontalCenter
-            MyTextField {
+            width: parent.width
+            Label {
+                text: "Левая граница"
+            }
+            TextArea {
                 id: lAnswer
+                Layout.alignment: Qt.AlignRight
                 padding: 20
+                color: "grey"
                 text: (answerInput.answer*(1-inacSlider.value/10000)).toFixed(decSlider.value)
                 readOnly: true
             }
+        }
+        RowLayout {
+            width: parent.width
             Label {
-                text: '<='
+                text: "Правая граница"
             }
-
-            MyTextField {
+            TextArea {
+                id: rAnswer
+                Layout.alignment: Qt.AlignRight
                 padding: 20
+                color: "grey"
+                text: (answerInput.answer*(1+inacSlider.value/10000)).toFixed(decSlider.value)
+                readOnly: true
+            }
+        }
+        RowLayout {
+            width: parent.width
+            Label {
+                text: "Ответ"
+            }
+            TextField {
+                padding: 20
+                Layout.preferredWidth: rAnswer.width
+                Layout.alignment: Qt.AlignRight
                 id: answerInput
                 property var answer: parseFloat(text.replace(',', '.'))
                 placeholderText: Data.names[Data.settings.lang].tasks['FixedNumber'].create.answerplace
@@ -97,17 +107,8 @@ Control {
                 text: '0'
                 selectByMouse: true
             }
-            Label {
-                text: '<='
-            }
-            MyTextField {
-                id: rAnswer
-                padding: 20
-                text: (answerInput.answer*(1+inacSlider.value/10000)).toFixed(decSlider.value)
-                readOnly: true
-            }
-
         }
+
 
     }
 }

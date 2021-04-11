@@ -9,17 +9,20 @@ Control {
     function init() {
         label.text=contentObj['text']
     }
-
+    height: childrenRect.height
     Flickable {
                 id: flick
-                anchors.fill: parent
+                width: parent.width
+                height: Math.min(400, contentItem.childrenRect.height)
                 TextArea.flickable: TextArea {
                     id: label
                     wrapMode: TextArea.Wrap
+                    height: Math.max(100, contentHeight)
                     selectByMouse: true
                     readOnly: true
+                    rightInset: sb.width+3
                     placeholderText: qsTr("Question")
                 }
-                ScrollBar.vertical: ScrollBar {}
+                ScrollBar.vertical: ScrollBar { id: sb; width: 10}
             }
 }

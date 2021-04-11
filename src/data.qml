@@ -39,7 +39,6 @@ Item {
         }
     }
 
-    property var fontsizelist: [10, 12, 14, 16]
 
     //список языков
     property var langList: [
@@ -104,7 +103,7 @@ Item {
                 'taskComponent': {
                     'question': 'Question',
                     'basicscore': 'Basic score',
-                    'typeList': [ "TextAnswer (russian)", "FixedNumber", "MultipleVariants","TableAnswer"]
+                    'typeList': [ "TextAnswer (russian only)", "FixedNumber", "MultipleVariants","TableAnswer"]
                 },
                 'buttons': {
                     'symbkeyboard': 'Open keyboard',
@@ -146,6 +145,9 @@ Item {
                 'headercomponent': {
                     'infotext': 'Name: %s\nPupil: %s\nTime: %s\nScore: %s\nBasicScore: %s\nPercentage: %s%'
                 }
+            },
+            'aboutpage': {
+                'title': 'About me'
             },
             'navmenu': {
                 'home': 'Home',
@@ -208,7 +210,7 @@ Item {
         'ru': {
             'homepage': {
                 'title': 'Главная',
-                'welcome': "Привет, новый пользователь. Ты только что открыл это приложение, и если это впервые, то можешь ознакомиться с инструкциями ниже. Они также будут в правом меню, которое ты откроешь с помощью свайпа или значка вопроса в правой части шапки приложения. WakaWaka продолжает разрабатываться, поэтому, пожалуйста: опиши все проблемы/баги и предложения в контактах на странице 'О мне'"
+                'welcome': ""
             },
             'createpage': {
                 'title': 'Создать',
@@ -244,8 +246,11 @@ Item {
                     'infotext': 'Название: %s\nУченик: %s\nВремя: %s\nБалл: %s\nМаксимальный балл: %s\nВерно: ~%s%'
                 }
             },
+            'aboutpage': {
+                'title': 'Обо мне'
+            },
             'openpage': {
-                'title': 'Open',
+                'title': 'Открыть',
                 'enterkeycomponent': {
                     'codeplace': 'Код теста',
                     'buttons': {

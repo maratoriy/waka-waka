@@ -8,23 +8,27 @@ Control {
     property var contentObj
     function init() {
         for(let i=0;i<contentObj['number'];i++) {
-            listModel.append({ val: false, name: contentObj['variant'+i], ind: listModel.count })
+            listModel.append({ name: contentObj['variant'+i], ind: i })
         }
     }
-    function obj() {
-        var obj=contentObj
+    function getObj() {
         let panswer=""
         for(let i=0;i<listModel.count;i++) {
             panswer+=gridView.itemAtIndex(i).val? "1" : "0"
         }
-        obj['panswer']=panswer
-        obj['score']=obj['basicScore']*(obj['answer']===obj['panswer'])
+        var obj= Object.assign({},
+                               contentObj,
+                               {
+                                   'panswer': panswer,
+                                   'score': contentObj['basicScore']*(contentObj['answer']===panswer)
+                               })
         return obj
     }
     function reset() {
         for(let i=0;i<listModel.count; i++)
             gridView.itemAtIndex(i).val=false
     }
+    height: childrenRect.height
     Component {
         id: variantComponent
         Row  {
@@ -36,7 +40,7 @@ Control {
             Flickable {
                 width: gridView.cellWidth-cb.width
                 height: 80
-                ScrollBar.vertical: ScrollBar { id: sb; policy: ScrollBar.AlwaysOn}
+                ScrollBar.vertical: ScrollBar { id: sb; policy: ScrollBar.AlwaysOn; width: 3}
                 TextArea.flickable: TextArea {
                     id: ta;
                     rightInset: sb.width+5
@@ -57,10 +61,8 @@ Control {
 
     GridView {
         id: gridView
-        ScrollBar.vertical: ScrollBar {
-            policy: ScrollBar.AlwaysOn
-        }
-        anchors.fill: parent
+        height: contentItem.childrenRect.height
+        width: parent.width
         cellWidth: width/2
         model: listModel
         clip: true

@@ -8,6 +8,7 @@ import "components/taskComponents"
 import Data 1.0
 import Backend 1.0
 
+
 Page  {
     id: root
     function init(f, obj) {
@@ -16,7 +17,7 @@ Page  {
             swipeView.addItem(headerComponent.createObject(swipeView, {}))
             swipeView.addItem(endComponent.createObject(swipeView, {}))
             break;
-        }
+            }
         case "update": {
             swipeView.addItem(headerComponent.createObject(swipeView, {}))
             let buf=swipeView.itemAt(0)
@@ -30,24 +31,24 @@ Page  {
                 swipeView.insertItem(swipeView.count-1, createTaskComponent.createObject(swipeView, {}))
                 swipeView.itemAt(swipeView.count-2).init(obj['taskList'][key])
             }
-            break;
         }
         }
 
 
     }
 
-    function makeObj() {
-        var obj={}
-        obj['name']= swipeView.itemAt(0).name
-        obj['time']= Math.round(swipeView.itemAt(0).time)/1000
-        obj['password']= swipeView.itemAt(0).password
-        obj['type']="blank"
-        obj['count']=swipeView.count-2
+    function getObj() {
+        var obj={
+            'name': swipeView.itemAt(0).name,
+            'time': Math.round(swipeView.itemAt(0).time),
+            'password': swipeView.itemAt(0).password,
+            'type': "blank",
+            'count': swipeView.count-2
+        }
         let resBasicScore=0
         var taskList={}
         for(var i=1;i<swipeView.count-1;i++) {
-            taskList["task"+i]=swipeView.itemAt(i).obj()
+            taskList["task"+i]=swipeView.itemAt(i).getObj()
             resBasicScore+=taskList["task"+i]['question']["basicScore"]
         }
         obj['taskList']=taskList
@@ -58,7 +59,7 @@ Page  {
     Control {
         id: childRoot
         width: parent.width*0.90
-        height: parent.height*0.90
+        height: parent.height*0.95
         anchors.centerIn: parent
         Control {
             width: parent.width
@@ -71,7 +72,7 @@ Page  {
             SwipeView {
                 id: swipeView
                 width: parent.width*0.9
-                height: parent.height*0.9
+                height: parent.height*0.85
                 anchors.centerIn: parent
                 Material.theme: Material.Light
                 clip: true
@@ -150,9 +151,9 @@ Page  {
             Component {
                 id: headerComponent
                 Control {
-                    property string name: textArea.text
-                    property string time: slider.value*1000
-                    property string password: passwordInput.text
+                    property alias name: textArea.text
+                    property alias time: slider.value
+                    property alias password: passwordInput.text
                     Column {
                         anchors.fill: parent
                         TextArea {
@@ -212,7 +213,7 @@ Page  {
                             width: parent.width*0.9
                             anchors.horizontalCenter: parent.horizontalCenter
                             text: Data.names[Data.settings.lang].createpage.buttons.create
-                            onClicked: testLabel.text = Backend.toWideString(JSON.stringify(makeObj()))
+                            onClicked: testLabel.text = Backend.toWideString(JSON.stringify(getObj()))
                         }
                         RowLayout {
                             width: parent.width
@@ -251,27 +252,27 @@ Page  {
             Grid {
                 id: grid
                 anchors.fill: parent
-                property bool ori: root.width>root.height
+                property bool ori: true
                 rows:    ori ? 1 : 3
                 columns: ori ? 3 : 1
                 Material.theme: Material.Dark
                 ToolButton {
-                    width:  parent.width  * (parent.ori ? 0.33 : 1)
-                    height: parent.height * (parent.ori ? 1 : 0.33)
+                    width:  parent.width  * (parent.ori ? 1/3 : 1)
+                    height: parent.height * (parent.ori ? 1 : 1/3)
                     text: Data.names[Data.settings.lang].createpage.buttons['delete']
                     enabled: swipeView.currentIndex!==0 && swipeView.currentIndex!==swipeView.count-1
                     onClicked: swipeView.removeItem(swipeView.itemAt(swipeView.currentIndex))
                 }
                 ToolButton {
-                    width:  parent.width  * (parent.ori ? 0.33 : 1)
-                    height: parent.height * (parent.ori ? 1 : 0.33)
+                    width:  parent.width  * (parent.ori ? 1/3 : 1)
+                    height: parent.height * (parent.ori ? 1 : 1/3)
                     text: Data.names[Data.settings.lang].createpage.buttons.reset
                     enabled: swipeView.currentIndex!==0 && swipeView.currentIndex!==swipeView.count-1
                     onClicked: swipeView.itemAt(swipeView.currentIndex).reset()
                 }
                 ToolButton {
-                    width:  parent.width  * (parent.ori ? 0.33 : 1)
-                    height: parent.height * (parent.ori ? 1 : 0.33)
+                    width:  parent.width  * (parent.ori ? 1/3 : 1)
+                    height: parent.height * (parent.ori ? 1 : 1/3)
                     text: Data.names[Data.settings.lang].createpage.buttons.add
                     onClicked: {
                         swipeView.insertItem(swipeView.count-1, createTaskComponent.createObject(swipeView, {}))
@@ -287,15 +288,8 @@ Page  {
         width: Math.max(parent.width,parent.height)*0.2
         height: Math.min(parent.height,parent.width)*0.5
         visible: false
-        function setText(symb) {
-            for(var i=0;i<swipeView.contentItem.children.length;i++) {
-                //if(swipeView.contentItem.children[i].focus) root.contentItem.children[i].text+=symb;
-               console.log(swipeView.contentItem.children[i].objectName)
-            }
-            if(swipeView.children.length!==0) setText(symb);
-        }
         onCurSymbChanged: {
-            setText(curSymb);
+            Backend.clipboard.setText(curSymb)
         }
     }
     FontLoader { id: electronicaNormal; source: Data.urls.fonts.Electronica.normal }

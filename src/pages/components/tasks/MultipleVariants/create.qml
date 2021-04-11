@@ -5,42 +5,47 @@ import Data 1.0
 import QtQml.Models 2.15
 
 Control {
-    function init() {
-
+    function init(contentObj) {
+        listModel.clear()
+        for(let i=0;i<contentObj['number'];i++)
+            listModel.append({value: contentObj['answer'][i]==='1', name: contentObj['variant'+i], ind: i})
     }
 
-    function obj() {
-        var obj={}
-        obj['number']=listModel.count
+    function getObj() {
         let answer=""
+        let vars={}
         for(let i=0;i<listModel.count;i++) {
-            obj['variant'+i]=gridView.itemAtIndex(i).name
+            vars['variant'+i]=gridView.itemAtIndex(i).txt
             answer+=gridView.itemAtIndex(i).val? "1" : "0"
         }
-        obj['answer']=answer
-        console.log(obj)
-        return obj
+        var obj={
+            'number': listModel.count,
+            'answer': answer,
+        }
+        return Object.assign({}, obj, vars)
     }
     function reset() {
         listModel.clear()
-        listModel.append({val: false, name: '', ind: 0})
-        listModel.append({val: false, name: '', ind: 1})
+        listModel.append({value: false, name: '', ind: 0})
+        listModel.append({value: false, name: '', ind: 1})
     }
+    height: childrenRect.height
     Component { 
         id: variantComponent
         Row  {
             property alias val: cb.checked
             clip: true
-            property alias name: ta.text
+            property alias txt: ta.text
 
             CheckBox {
                 id: cb;
+                checked: value
                 //anchors.left: parent.left
             }
             Flickable {
                 width: gridView.cellWidth-cb.width-deleteVarBut.width
                 height: 80
-                ScrollBar.vertical: ScrollBar { id: sb; policy: ScrollBar.AlwaysOn}
+                ScrollBar.vertical: ScrollBar { id: sb; policy: ScrollBar.AlwaysOn; width: 7}
                 TextArea.flickable: TextArea {
                     id: ta;
                     rightInset: sb.width+5
@@ -49,6 +54,7 @@ Control {
                     wrapMode: TextArea.Wrap;
                     placeholderText: Data.names[Data.settings.lang].tasks['MultipleVariants'].create['var']
                     selectByMouse: true
+                    text: name
                 }
             }
             ToolButton {
@@ -70,12 +76,12 @@ Control {
         }
 
         ListElement {
-            val: false
+            value: false
             name: ''
             ind: 0
         }
         ListElement {
-            val: false
+            value: false
             name: ''
             ind: 1
         }
@@ -83,21 +89,26 @@ Control {
 
     GridView {
         id: gridView
-        ScrollBar.vertical: ScrollBar {
-            id: sb
-            policy: ScrollBar.AlwaysOn
-        }
-        header: ToolButton {
-            text: Data.names[Data.settings.lang].tasks['MultipleVariants'].create.addvar
-            Material.theme: Material.Dark
+        width: parent.width
+        height: contentItem.childrenRect.height
+        interactive: false
+        header: Control {
+            height: 60
+            topInset: 10
+            bottomInset: 10
+            width: parent.width
             background: Rectangle {
                 radius: 5
                 color: Data.styles.actions[root.Material.theme]
             }
-            width: parent.width-sb.width-5
-            onClicked: listModel.append({ val: false, name: ' ', ind: listModel.count})
+            ToolButton {
+                text: Data.names[Data.settings.lang].tasks['MultipleVariants'].create.addvar
+                Material.theme: Material.Dark
+                width: parent.width
+                height: parent.height
+                onClicked: listModel.append({ val: false, name: '', ind: listModel.count})
+            }
         }
-        anchors.fill: parent
         cellWidth: width/2
         model: listModel
         clip: true

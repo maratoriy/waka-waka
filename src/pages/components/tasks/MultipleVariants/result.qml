@@ -11,16 +11,9 @@ Control {
             listModel.append({ val: contentObj['panswer'][i]==='1', name: contentObj['variant'+i], ind: listModel.count })
         }
     }
-    function obj() {
-        var obj=contentObj
-        let panswer=""
-        for(let i=0;i<listModel.count;i++) {
-            panswer+=gridView.itemAtIndex(i).val? "1" : "0"
-        }
-        obj['panswer']=panswer
-        obj['score']=obj['basicScore']*(obj['answer']===obj['panswer'])
-        return obj
+    function getObj() {
     }
+    height: childrenRect.height
     Component {
         id: variantComponent
         Row  {
@@ -33,7 +26,7 @@ Control {
             Flickable {
                 width: gridView.cellWidth-cb.width
                 height: 80
-                ScrollBar.vertical: ScrollBar { id: sb; policy: ScrollBar.AlwaysOn}
+                ScrollBar.vertical: ScrollBar { id: sb; policy: ScrollBar.AlwaysOn; width: 3}
                 TextArea.flickable: TextArea {
                     id: ta;
                     color: contentObj['answer'][ind]==='1' ? "green" : "black"
@@ -55,10 +48,8 @@ Control {
 
     GridView {
         id: gridView
-        ScrollBar.vertical: ScrollBar {
-
-        }
-        anchors.fill: parent
+        height: contentItem.childrenRect.height
+        width: parent.width
         cellWidth: width/2
         model: listModel
         clip: true

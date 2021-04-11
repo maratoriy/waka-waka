@@ -7,6 +7,7 @@ import QtQuick.Layouts 1.15
 
 Control {
     property var contentObj
+    height: childrenRect.height
     function init() {
         swipeView.addItem(comp.createObject(swipeView, {}))
         swipeView.addItem(comp.createObject(swipeView, {}))
@@ -17,8 +18,12 @@ Control {
             swipeView.itemAt(1).listModel.append({ind: i, nod: nod['name'], subNods: nod['subNods']})
         }
     }
+    function getObj() {
+
+    }
     Control {
-        anchors.fill: parent
+        height: 500
+        width: parent.width
         TabBar {
             id: tabBar
             width: parent.width
@@ -34,7 +39,7 @@ Control {
             id: swipeView
             anchors.bottom: parent.bottom
             currentIndex: tabBar.currentIndex
-            height: parent.height-tabBar.height
+            height: 400
             width: parent.width
             interactive: false
             clip: true
@@ -48,13 +53,15 @@ Control {
 
                 }
                 id: listView
+                width: swipeView.width
                 model: listModel
                 clip: true
-                ScrollBar.vertical: ScrollBar { id: scrollBar }
+                height: 400
+                ScrollBar.vertical: ScrollBar { id: scrollBar; width: 5 }
                 spacing: 10
                 delegate: Row {
                     width: listView.width
-                    height: listView.height/4
+                    height: 60
                     topPadding: height/10
                     property alias subList: subListView
                     property alias subListMod: subListModel

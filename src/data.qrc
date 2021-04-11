@@ -51,5 +51,6 @@
         <file>images/help/TableAnswer/create.png</file>
         <file>images/icons/appicon.ico</file>
         <file>images/icons/appicon.png</file>
+        <file>images/icons/appicon.svg</file>
     </qresource>
 </RCC>

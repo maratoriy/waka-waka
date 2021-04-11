@@ -26,41 +26,27 @@ Page {
             Flickable {
                 width: parent.width*0.95
                 height: parent.height*0.98
+                clip: true
                 contentHeight: contentItem.childrenRect.height
                 boundsBehavior: Flickable.StopAtBounds
                 anchors.centerIn: parent
                 //ScrollBar.vertical: ScrollBar { policy: ScrollBar.AlwaysOn}
-                Label {
-                    id: nameText
-                    //anchors.horizontalCenter: parent.horizontalCenter
-                    font.pointSize: root.font.pointSize*1.4
+                Column {
                     width: parent.width
-                    text: Data.programName
-                }
-                Label {
-                    id: infoText
-                    width: parent.width
-                    font.pointSize: root.font.pointSize*1.2
-                    wrapMode: Label.Wrap
-                    anchors.top:  nameText.bottom
-                    text: Data.names[Data.settings.lang].homepage.welcome
-                }
-                Label {
-                    id: info
-                    width: parent.width
-                    font.pointSize: root.font.pointSize*1.2
-                    wrapMode: Label.Wrap
-                    anchors.top:  infoText.bottom
-                    text: Data.names[Data.settings.lang].homepage.welcome
-                }
-                InfoComponent {
-                    width: parent.width
-                    height: contentItem.childrenRect.height
-                    anchors.top: info.bottom
-                    anchors.topMargin: 50
-                    //Layout.fillHeight: true
-                    Material.theme: Material.Light
-                    model: Data.helpModel
+                    Label {
+                        id: infoText
+                        width: parent.width
+                        font.pointSize: root.font.pointSize*1.2
+                        wrapMode: Label.Wrap
+                        text: Data.names[Data.settings.lang].homepage.welcome
+                    }
+                    InfoComponent {
+                        width: parent.width
+                        height: contentItem.childrenRect.height
+                        //Layout.fillHeight: true
+                        Material.theme: Material.Light
+                        model: Data.helpModel
+                    }
                 }
             }
         }

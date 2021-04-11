@@ -7,9 +7,9 @@ import Backend 1.0
 import "components"
 
 Control {
-    property var testObj
+    property var contentObj
     function init() {        
-        var taskListObj= testObj["taskList"]
+        var taskListObj= contentObj["taskList"]
         swipeView.addItem(pupilDataComponent.createObject(swipeView, {}))
         for(var key in taskListObj) {
             swipeView.addItem(taskComponent.createObject(swipeView, {}))
@@ -19,20 +19,20 @@ Control {
         swipeView.addItem(endComponent.createObject(swipeView, {}))
         switchHide(false)
 
-        timerLabel.time=testObj['time']
+        timerLabel.time=contentObj['time']
     }
-    function makeObj() {
-        testObj['pupil']=swipeView.itemAt(0).surname+' '+swipeView.itemAt(0).name
-        testObj['ptime']=timerLabel.time
-        testObj['type']='result'
+    function getObj() {
+        contentObj['pupil']=swipeView.itemAt(0).surname+' '+swipeView.itemAt(0).name
+        contentObj['ptime']=timerLabel.time
+        contentObj['type']='result'
         var taskList={}
         let resBasicScore=0
         for(var i=1;i<swipeView.count-1;i++) {
-            taskList["task"+i]=swipeView.itemAt(i).obj()
-            resBasicScore+=taskList["task"+i]['question']["score"]
+            taskList["task"+i]=swipeView.itemAt(i).getObj()
+            resBasicScore+=parseFloat(taskList["task"+i]['question']["score"])
         }
-        testObj['score']=resBasicScore
-        return testObj
+        contentObj['score']=resBasicScore
+        return contentObj
     }
     property bool switchHideProp
     function switchHide(val) {
@@ -45,7 +45,7 @@ Control {
 
     Control {
         width: parent.width*0.90
-        height: parent.height*0.90
+        height: parent.height*0.95
         anchors.centerIn: parent
         Control {
             width: parent.width
@@ -185,10 +185,10 @@ Control {
                             function endTask() {
                                 enabled=false
                                 switchHide(false)
-                                testLabel.text = Backend.toWideString(JSON.stringify(makeObj()))
+                                testLabel.text = Backend.toWideString(JSON.stringify(getObj()))
                             }
                             onClicked: endTask()
-                            //onClicked: testLabel.text = Backend.toWideString(JSON.stringify(makeObj()))
+                            //onClicked: testLabel.text = Backend.toWideString(JSON.stringify(getObj()))
                         }
                         RowLayout {
                             width: parent.width

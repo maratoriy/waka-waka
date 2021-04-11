@@ -5,66 +5,95 @@ import Data 1.0
 import QtQml.Models 2.15
 
 Control {
-    property var contentObj
-    function init() {
+    height: listView.height
+    function init(contentObj) {
+        listModel.clear()
+        for(let i=0;i<contentObj['number'];i++) {
+            let nod=contentObj['nods']['nod'+i]
+            listModel.append(makeNod(i,nod['name'],nod['subNods']))
+        }
+    }
+    function getObj() {
+        let subObj={}
+        for(let i=0;i<listView.count;i++) {
+            let nod={
+                'name': listView.itemAtIndex(i)._nod,
+                'subNods': listView.itemAtIndex(i).getSubNods()
+            }
+            subObj['nod'+i]=nod
+        }
+        var obj={
+            'number': listView.count,
+            'nods': subObj
+        }
+        return obj
+    }
+    function makeNod(i,n,s) {
+        return {ind: i, nod: n, subNods: s}
     }
     function reset() {
         listModel.clear()
-        listModel.append({ind: 0})
+        listModel.append({ind: 0, nod: 'привет'})
     }
-    function obj() {
-        var obj={}
-        obj['number']=listView.count
-        let subObj={}
-        for(let i=0;i<listView.count;i++) {
-            let nod={}
-            nod['name']=listView.itemAtIndex(i).nod
-            let subNods={}
-            subNods['number']=listView.itemAtIndex(i).subList.count
-            for(let j=0;j<listView.itemAtIndex(i).subList.count;j++) {
-                subNods['subNod'+j]=listView.itemAtIndex(i).subList.itemAtIndex(j).text
-            }
-            nod['subNods']=subNods
-            subObj['nod'+i]=nod
-        }
-        obj['nods']=subObj
-        return obj
-    }
+    Component.onCompleted: listModel.append(makeNod(0,'',{}))
     ListModel {
         id: listModel
         function reind() {
             for(let i=0;i<count;i++) setProperty(i, 'ind', i)
         }
-        ListElement {
-            ind: 0
-        }
     }
 
     ListView {
         id: listView
-        anchors.fill: parent
+        width: parent.width
         model: listModel
-        clip: true
-        ScrollBar.vertical: ScrollBar { id: scrollBar }
-        header: ToolButton {
-            text: Data.names[Data.settings.lang].tasks['TableAnswer'].create.addnod
-            Material.theme: Material.Dark
-            rightInset: scrollBar.width
+        interactive: false
+        height: contentItem.childrenRect.height
+        //ScrollBar.vertical: ScrollBar { id: scrollBar; width: 5 }
+        header: Control {
+            height: 60
+            topInset: 10
+            bottomInset: 10
+            width: parent.width
             background: Rectangle {
                 radius: 5
                 color: Data.styles.actions[root.Material.theme]
             }
-            width: parent.width
-            onClicked: listModel.append({ind: listModel.count})
+            ToolButton {
+                text: Data.names[Data.settings.lang].tasks['TableAnswer'].create.addnod
+                Material.theme: Material.Dark
+                //rightInset: scrollBar.width
+                width: parent.width
+                height: parent.height
+                onClicked: listModel.append(makeNod(listModel.count,'',{}))
+            }
         }
         spacing: 10
         delegate: Row {
             width: listView.width
-            height: listView.height/4
+            height: 60
             topPadding: height/10
-            property string nod: mainTextEdit.text
-            property alias subList: subListView
-            property alias subModel: subListModel
+            Component.onCompleted: initNod()
+            property string _nod: mainTextEdit.text
+            function makeSubNod(i,s) {
+                return {subInd: i, subNod: s}
+            }
+            function initNod() {
+                if(subNods['number']>0) {
+                    subListModel.clear()
+                    for(let i=0;i<subNods['number'];i++) {
+                        subListModel.append(makeSubNod(i,subNods['subNod'+i]))
+                    }
+                } else {
+                    subListModel.append(makeSubNod(0,''))
+                }
+            }
+            function getSubNods() {
+                let obj={ 'number': subListView.count}
+                for(let i=0;i<subListView.count;i++)
+                    obj['subNod'+i]=subListView.itemAtIndex(i).text
+                return obj
+            }
             TextField {
                 id: mainTextEdit
                 padding: 20
@@ -74,7 +103,7 @@ Control {
                     border.color: Data.styles.actions[root.Material.theme]
                     border.width: 1
                 }
-                //text: nodd
+                text: nod
                 placeholderText: Data.names[Data.settings.lang].tasks['TableAnswer'].create.nod
             }
             ToolSeparator {
@@ -85,13 +114,10 @@ Control {
                 function reind() {
                     for(let i=0;i<count;i++) setProperty(i, 'subInd', i)
                 }
-                ListElement {
-                    subInd: 0
-                }
             }
             ListView {
                 id: subListView
-                width: parent.width-mainTextEdit.width-addTextEditButton.width*2-separator.width-scrollBar.width
+                width: parent.width-mainTextEdit.width-addTextEditButton.width*2-separator.width//-scrollBar.width
                 height: parent.height
                 clip: true
                 orientation: Qt.Horizontal
@@ -108,7 +134,8 @@ Control {
                         border.color: Data.styles.actions[root.Material.theme]
                         border.width: 1
                     }
-                    //text: subNod
+                    text: subNod
+                    placeholderText: subInd
                     ToolButton {
                         id: subCloseTextEditButton
                         anchors.right: parent.right
@@ -120,8 +147,6 @@ Control {
                         icon.source: Data.urls.icons["close"]
                         onClicked: { subListModel.remove(subInd, 1); subListModel.reind() }
                     }
-
-                    placeholderText: subInd
                 }
             }
             ToolButton {
@@ -130,7 +155,7 @@ Control {
                 width: height
                 icon.color: enabled ? "black" : "grey"
                 icon.source: Data.urls.icons["add"]
-                onClicked: subListModel.append({subInd: subListModel.count})
+                onClicked: subListModel.append(makeSubNod(subListModel.count,''))
             }
             ToolButton {
                 id: closeTextEditButton

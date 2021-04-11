@@ -16,7 +16,6 @@
         <file>pages/components/tasks/TextAnswer/create.qml</file>
         <file>pages/components/tasks/TextAnswer/result.qml</file>
         <file>pages/components/tasks/TextAnswer/task.qml</file>
-        <file>pages/UpdatePage.qml</file>
         <file>create.qml</file>
         <file>open.qml</file>
         <file>pages/components/tasks/MultipleVariants/create.qml</file>
@@ -30,15 +29,9 @@
         <file>pages/components/tasks/FixedNumber/result.qml</file>
         <file>pages/components/tasks/FixedNumber/task.qml</file>
         <file>pages/components/UpdateTaskComponent.qml</file>
-        <file>pages/components/tasks/TextAnswer/update.qml</file>
-        <file>pages/components/tasks/TableAnswer/update.qml</file>
-        <file>pages/components/tasks/MultipleVariants/update.qml</file>
-        <file>pages/components/tasks/FixedNumber/update.qml</file>
-        <file>pages/components/tasks/FourVariants/create.qml</file>
-        <file>pages/components/tasks/FourVariants/result.qml</file>
-        <file>pages/components/tasks/FourVariants/task.qml</file>
         <file>pages/components/controls/MyTextField.qml</file>
         <file>about.qml</file>
         <file>pages/components/taskComponents/SymbolsKeyboard.qml</file>
+        <file>pages/components/controls/Splash.qml</file>
     </qresource>
 </RCC>

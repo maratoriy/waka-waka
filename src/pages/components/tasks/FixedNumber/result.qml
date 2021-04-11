@@ -15,43 +15,34 @@ Control {
     }
     function reset() {
     }
-    function obj() {
-        var obj={}
-        obj['panswer']=parseFloat(answerArea.text)
-        obj['score']=obj['basicScore']*(check())
-        return obj
-    }
-    function check() {
-        return (contentObj['lAnswer']<=answerArea.answer)&&(contentObj['rAnswer']>=answerArea.answer)
+    function getObj() {
     }
 
+    height: childrenRect.height
     Column {
-        anchors.fill: parent
+        width: parent.width
+        height: childrenRect.height
         Label {
             id: decArea
             color: "black"
-            font.pointSize: root.font.pointSize*1.5
             //readOnly: true
             text: Data.names[Data.settings.lang].tasks['FixedNumber'].result.decimalsplace
         }
         Label {
             id: inacArea
             color: "black"
-            font.pointSize: root.font.pointSize*1.5
             //readOnly: true
             text: Data.names[Data.settings.lang].tasks['FixedNumber'].result.inacplace
         }
         Label {
             id: answerArea
             color: "black"
-            font.pointSize: root.font.pointSize*1.5
             //readOnly: true
             text: Data.names[Data.settings.lang].tasks['FixedNumber'].result.answerplace
         }
         Label {
             id: panswerArea
             color: "black"
-            font.pointSize: root.font.pointSize*1.5
             //readOnly: true
             text: Data.names[Data.settings.lang].tasks['FixedNumber'].result.panswerplace
         }

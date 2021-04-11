@@ -7,6 +7,7 @@ import QtWinExtras 1.0
 
 import "pages"
 import "pages/components"
+import "pages/components/controls"
 import Data 1.0
 import Backend 1.0
 
@@ -18,9 +19,17 @@ ApplicationWindow {
     font.family: robotoMedium.name
     Material.theme: settingsLoader.item.theme
     visible: true
-
+    Splash {
+        id: splash
+        visible: false
+        x: root.x
+        y: root.y
+        width: root.width
+        height: root.height
+    }
     Component.onCompleted: {
         setLightMode(Data.settings.theme)
+        splash.darkT=Data.settings.theme===Material.Dark
         font.pointSize = Data.settings.fontsize
         visibility     = (Data.settings.visibility!==3&&Data.settings.visibility!==0) ? Data.settings.visibility : 4
     }
@@ -144,11 +153,12 @@ ApplicationWindow {
         width: leftDrawerHeader.height*5
         Control {
             anchors.fill: parent
-            Item {
+            Control {
                 id: leftDrawerHeader
-                height: parent.height*0.1
+                height: Math.max(parent.height*0.08, 70)
                 width: parent.width
                 anchors.top: parent.top
+
                 Item {
                     height: parent.height
                     width: height
@@ -167,7 +177,7 @@ ApplicationWindow {
                     text: Data.programName
                     horizontalAlignment: Label.AlignLeft
                     verticalAlignment:  Label.AlignVCenter
-                    font.pixelSize: parent.height*0.5
+                    font.pixelSize: parent.height*0.45
                 }
                 Item {
                     height: parent.height
@@ -223,23 +233,23 @@ ApplicationWindow {
         id: loader
         anchors.fill: parent
         source: "home.qml"
-//        onLoaded: console.log(source)
     }
     Drawer {
         id: settingsDrawer
-        height: parent.height*0.3
+        height: settingsLoader.item.height
         width: parent.width
         edge: Qt.BottomEdge
         Loader {
             id: settingsLoader
-            anchors.fill: parent
+            width: parent.width
+            height: childrenRect.height
             sourceComponent: settingsComponent
         }
     }
     function setLightMode(mode) {
         switch(mode) {
-        case Material.Dark: Material.theme=Material.Dark; Material.primary=Material.DeepPurple; Material.accent=Material.Purple;break;
-        case Material.Light: Material.theme=Material.Light; Material.primary=Material.Purple; Material.accent=Material.Pink; break;
+        case Material.Dark: Material.theme=Material.Dark; Material.primary=Material.DeepPurple; Material.accent=Material.DeepPurple;break;
+        case Material.Light: Material.theme=Material.Light; Material.primary=Material.Purple; Material.accent=Material.Purple; break;
         }
     }
     Component {

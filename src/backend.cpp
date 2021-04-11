@@ -5,8 +5,8 @@
 
 Backend::Backend(QObject *parent) : QObject(parent)
 {
-
 }
+
 QString Backend::jsonToBase64(QString str) {
     return QString::fromUtf8(str.toUtf8().toBase64());
 }
@@ -24,7 +24,6 @@ float Backend::compareStrings(QString panswer, QString keywords) {
     for(auto ansListIter:ansList) {
         if(pansList.contains(ansListIter)) count++;
     }
-    qDebug()<<ansList<<pansList;
     return count/totalCount;
 }
 QString Backend::prepareKeywords(QString wideString) {

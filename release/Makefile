@@ -238,6 +238,7 @@ Makefile: ../src/WakaWaka.pro ../../../Qt/5.15.2/mingw81_32/mkspecs/win32-g++/qm
 		../../../Qt/5.15.2/mingw81_32/mkspecs/features/resources.prf \
 		../../../Qt/5.15.2/mingw81_32/mkspecs/features/moc.prf \
 		../../../Qt/5.15.2/mingw81_32/mkspecs/features/win32/opengl.prf \
+		../../../Qt/5.15.2/mingw81_32/mkspecs/features/uic.prf \
 		../../../Qt/5.15.2/mingw81_32/mkspecs/features/qmake_use.prf \
 		../../../Qt/5.15.2/mingw81_32/mkspecs/features/file_copies.prf \
 		../../../Qt/5.15.2/mingw81_32/mkspecs/features/win32/windows.prf \
@@ -247,6 +248,7 @@ Makefile: ../src/WakaWaka.pro ../../../Qt/5.15.2/mingw81_32/mkspecs/win32-g++/qm
 		../../../Qt/5.15.2/mingw81_32/mkspecs/features/lex.prf \
 		../src/WakaWaka.pro \
 		../../../Qt/5.15.2/mingw81_32/lib/Qt5Quick.prl \
+		../../../Qt/5.15.2/mingw81_32/lib/Qt5Widgets.prl \
 		../../../Qt/5.15.2/mingw81_32/lib/Qt5Gui.prl \
 		../../../Qt/5.15.2/mingw81_32/lib/Qt5QmlModels.prl \
 		../../../Qt/5.15.2/mingw81_32/lib/Qt5Qml.prl \
@@ -425,6 +427,7 @@ Makefile: ../src/WakaWaka.pro ../../../Qt/5.15.2/mingw81_32/mkspecs/win32-g++/qm
 ../../../Qt/5.15.2/mingw81_32/mkspecs/features/resources.prf:
 ../../../Qt/5.15.2/mingw81_32/mkspecs/features/moc.prf:
 ../../../Qt/5.15.2/mingw81_32/mkspecs/features/win32/opengl.prf:
+../../../Qt/5.15.2/mingw81_32/mkspecs/features/uic.prf:
 ../../../Qt/5.15.2/mingw81_32/mkspecs/features/qmake_use.prf:
 ../../../Qt/5.15.2/mingw81_32/mkspecs/features/file_copies.prf:
 ../../../Qt/5.15.2/mingw81_32/mkspecs/features/win32/windows.prf:
@@ -434,6 +437,7 @@ Makefile: ../src/WakaWaka.pro ../../../Qt/5.15.2/mingw81_32/mkspecs/win32-g++/qm
 ../../../Qt/5.15.2/mingw81_32/mkspecs/features/lex.prf:
 ../src/WakaWaka.pro:
 ../../../Qt/5.15.2/mingw81_32/lib/Qt5Quick.prl:
+../../../Qt/5.15.2/mingw81_32/lib/Qt5Widgets.prl:
 ../../../Qt/5.15.2/mingw81_32/lib/Qt5Gui.prl:
 ../../../Qt/5.15.2/mingw81_32/lib/Qt5QmlModels.prl:
 ../../../Qt/5.15.2/mingw81_32/lib/Qt5Qml.prl:
