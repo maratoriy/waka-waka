@@ -24,6 +24,7 @@ Item {
     }
 
     function toWideString(str) {
+        console.log(str);
         return reverseString(backendCpp.jsonToBase64(str))
     }
     property var strings: {

@@ -9,11 +9,12 @@ Control {
         questionContent.contentObj=taskObj.questionContent
         questionContent.init()
         loader.source="qrc:/pages/components/tasks/"+taskObj['type']+"/task.qml"
+
         loader.item.contentObj=taskObj.question
         loader.item.init()
     }
     function getObj() {
-        taskObj['question']=loader.item.getObj()
+        taskObj['question']=loader.item.getObj();
         return taskObj
     }
     function reset() {

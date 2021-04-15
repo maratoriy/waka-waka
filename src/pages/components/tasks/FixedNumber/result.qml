@@ -37,6 +37,7 @@ Control {
         Label {
             id: answerArea
             color: "black"
+            visible: contentObj['showAnswer']===1
             //readOnly: true
             text: Data.names[Data.settings.lang].tasks['FixedNumber'].result.answerplace
         }

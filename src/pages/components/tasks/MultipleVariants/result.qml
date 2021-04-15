@@ -29,7 +29,7 @@ Control {
                 ScrollBar.vertical: ScrollBar { id: sb; policy: ScrollBar.AlwaysOn; width: 3}
                 TextArea.flickable: TextArea {
                     id: ta;
-                    color: contentObj['answer'][ind]==='1' ? "green" : "black"
+                    color: (contentObj['answer'][ind]==='1'&&contentObj['showAnswer']===true) ? "green" : "black"
                     rightInset: sb.width+5
                     rightPadding: sb.width+5
                     //anchors.right: parent.right;

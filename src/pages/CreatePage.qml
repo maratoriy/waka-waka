@@ -285,11 +285,12 @@ Page  {
 
     SymbolsKeyboard {
         id: dialog
-        width: Math.max(parent.width,parent.height)*0.2
-        height: Math.min(parent.height,parent.width)*0.5
+        minimumWidth: Math.max(parent.width,parent.height)*0.2
+        minimumHeight: Math.min(parent.height,parent.width)*0.5
         visible: false
         onCurSymbChanged: {
             Backend.clipboard.setText(curSymb)
+            swipeView.itemAt(swipeView.currentIndex).setText(curSymb)
         }
     }
     FontLoader { id: electronicaNormal; source: Data.urls.fonts.Electronica.normal }

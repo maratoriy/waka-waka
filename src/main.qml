@@ -21,7 +21,7 @@ ApplicationWindow {
     visible: true
     Splash {
         id: splash
-        visible: false
+        visible: Data.debugMode
         x: root.x
         y: root.y
         width: root.width
@@ -197,9 +197,10 @@ ApplicationWindow {
                 height: parent.height-leftDrawerHeader.height
                 anchors.top: leftDrawerHeader.bottom
                 model: ListModel {
-                    ListElement { name: qsTr("Home");     url: "home"}
-                    ListElement { name: qsTr("Open");     url: "open"}
+                    //ListElement { name: qsTr("Home");     url: "home"}
                     ListElement { name: qsTr("Create");   url: "create"}
+                    ListElement { name: qsTr("Open");     url: "open"}
+                    ListElement { name: qsTr("Help");     url: "help"}
                     //ListElement { name: qsTr("Settings"); url: "settings"}
                     ListElement { name: qsTr("About");    url: "about"}
                 }
@@ -232,7 +233,7 @@ ApplicationWindow {
     Loader {
         id: loader
         anchors.fill: parent
-        source: "home.qml"
+        source: "create.qml"
     }
     Drawer {
         id: settingsDrawer

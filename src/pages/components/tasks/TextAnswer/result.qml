@@ -6,6 +6,7 @@ Control {
     property var contentObj
     function init() {
         panswerArea.text=contentObj['panswer']
+        answerArea.visible=contentObj['showAnswer']===true
         answerArea.text=contentObj['answer']
     }
     height: childrenRect.height

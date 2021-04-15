@@ -4,15 +4,20 @@ import QtQuick.Controls.Material 2.12
 import QtQuick.Layouts 1.12
 import Backend 1.0
 import Data 1.0
+import QtQuick.Window 2.3
 
-Control {
+Window {
     id: dialog
+    flags: Qt.CustomizeWindowHint | Qt.Window
+    property string curSymb;
+    Control {
+        anchors.fill: parent
+
     background: Rectangle {
         //radius: 5
         color: root.Material.theme===Material.Light ? 'white' : '#303030'
     }
 
-    property string curSymb;
     Column {
         anchors.fill: parent
         Rectangle {
@@ -76,5 +81,6 @@ Control {
                 }
             }
         }
+    }
     }
 }

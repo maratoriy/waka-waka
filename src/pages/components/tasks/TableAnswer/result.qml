@@ -17,6 +17,8 @@ Control {
             swipeView.itemAt(0).listModel.append({ind: i, nod: nod['name'], subNods: pnod['subNods']})
             swipeView.itemAt(1).listModel.append({ind: i, nod: nod['name'], subNods: nod['subNods']})
         }
+
+        tabBar.enabled=contentObj['showAnswer']===true
     }
     function getObj() {
 

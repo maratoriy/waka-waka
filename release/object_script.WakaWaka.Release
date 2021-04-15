@@ -3,6 +3,7 @@ release/main.o
 release/qmlclipboardadapter.o
 release/open_qml.o
 release/home_qml.o
+release/help_qml.o
 release/about_qml.o
 release/create_qml.o
 release/main_qml.o
@@ -23,6 +24,9 @@ release/pages_components_tasks_FixedNumber_create_qml.o
 release/pages_components_tasks_TextAnswer_result_qml.o
 release/pages_components_tasks_TextAnswer_task_qml.o
 release/pages_components_tasks_TextAnswer_create_qml.o
+release/pages_components_tasks_Theory_result_qml.o
+release/pages_components_tasks_Theory_task_qml.o
+release/pages_components_tasks_Theory_create_qml.o
 release/pages_components_tasks_TableAnswer_result_qml.o
 release/pages_components_tasks_TableAnswer_task_qml.o
 release/pages_components_tasks_TableAnswer_create_qml.o

@@ -6,12 +6,23 @@ import QtQuick.Controls.Material 2.12
 Control {
     id: root
     function init(taskObj) {
+        if(taskObj['type']!=='Theory') {
         textArea.text=taskObj['questionContent']['text']
         scoreArea.text=taskObj['question']['score']
         basicScoreArea.text=taskObj['question']['basicScore']
         loader.source="tasks/"+taskObj['type']+"/result.qml"
-        loader.item.contentObj=taskObj['question']
+
+        loader.item.contentObj=Object.assign({}, taskObj['question'],
+                            {
+                                'showAnswer': taskObj['showAnswer']
+                            })
         loader.item.init()
+        } else {
+            textArea.visible=false
+            flick.visible=false
+            scoreArea.visible=false
+            basicScoreArea.visible=false
+        }
     }
 
     Flickable {
@@ -20,8 +31,6 @@ Control {
         clip: true
         contentHeight: contentItem.childrenRect.height
         boundsBehavior: Flickable.StopAtBounds
-        Column {
-            width: parent.width
             Flickable {
                 id: flick
                 width: parent.width
@@ -36,6 +45,8 @@ Control {
                 ScrollBar.vertical: ScrollBar {}
             }
             Row {
+                id: scoreRow
+                anchors.top: flick.bottom
                 width: parent.width
                 spacing: width*0.1
                 TextArea {
@@ -54,9 +65,10 @@ Control {
 
             Loader {
                 id: loader
+                anchors.top: scoreRow.bottom
                 width: parent.width-10
                 height : childrenRect.height
             }
-        }
+
     }
 }

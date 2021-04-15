@@ -234,7 +234,7 @@ Control {
                 ToolButton {
                     width:  parent.width  * (parent.ori ? 0.5 : 1)
                     height: parent.height * (parent.ori ? 1 : 0.5)
-                    text: qsTr("Reset")
+                    text: qsTr("Сбросить")
                     enabled: swipeView.currentIndex!==0 && swipeView.currentIndex!==swipeView.count-1
                     onClicked: swipeView.itemAt(swipeView.currentIndex).reset()
                 }
@@ -242,7 +242,7 @@ Control {
                     id: enterBut
                     width:  parent.width  * (parent.ori ? 0.5 : 1)
                     height: parent.height * (parent.ori ? 1 : 0.5)
-                    text: qsTr("Enter")
+                    text: qsTr("Ввод")
                     enabled: swipeView.currentIndex!==swipeView.count-1
                     onClicked: {
                         if(!switchHideProp) { switchHide(true); timer.start() }

@@ -52,5 +52,8 @@
         <file>images/icons/appicon.ico</file>
         <file>images/icons/appicon.png</file>
         <file>images/icons/appicon.svg</file>
+        <file>images/icons/help (2).svg</file>
+        <file>images/icons/info.svg</file>
+        <file>images/icons/menu — копия.svg</file>
     </qresource>
 </RCC>

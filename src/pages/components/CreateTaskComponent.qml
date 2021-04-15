@@ -8,8 +8,16 @@ import "controls"
 Control {
     function init(contentObj) {
         textArea.text=contentObj['questionContent']['text']
+
+        cd1.checked=contentObj['showAnswer']===true
+
         comboBox.currentIndex=Data.typeList.indexOf(contentObj['type'])
-        loader.item.init(contentObj['question'])
+
+        var conObj = Object.assign({}, contentObj['question'],
+                   {
+                       'showAnswer': contentObj['showAnswer']
+                   })
+        loader.item.init(conObj)
         basicScoreArea.text=contentObj['question']['basicScore']
     }
     function getObj() {
@@ -20,11 +28,16 @@ Control {
             'type': Data.typeList[comboBox.currentIndex],
             'question': Object.assign({},
                 loader.item.getObj(),
-                { 'basicScore': parseInt(basicScoreArea.text)}
-            )
+                { 'basicScore': (Data.typeList[comboBox.currentIndex]==="Theory") ? 0 : parseInt(basicScoreArea.text)}
+            ),
+            'showAnswer': cd1.checked
         }
         return obj
     }
+    function setText(str) {
+        loader.item.obj.text+=str;
+    }
+
     function reset() {
         textArea.clear()
         loader.item.reset()
@@ -41,6 +54,20 @@ Control {
             width: 7
             policy: ScrollBar.AlwaysOn
         }
+        Column {
+            width: parent.width
+            height: childrenRect.height
+        Grid {
+            width: parent.width
+            height: childrenRect.height
+            columns: 1
+            CheckDelegate {
+                id: cd1
+                visible: comboBox.curType!=="Theory"
+                text: "Показывать ответ в результатах";
+                checked: false;
+            }
+        }
         Row {
             id: setRow
             width: parent.width
@@ -50,6 +77,7 @@ Control {
             ComboBox {
                 id: comboBox
                 width: parent.width*0.4
+                property string curType: Data.typeList[currentIndex]
                 model: Data.names[Data.settings.lang].createpage.taskComponent.typeList
                 delegate: Control {
                     width: comboBox.width
@@ -73,6 +101,7 @@ Control {
                 id: basicScoreArea
                 width: parent.width*0.4
                 height: 50
+                visible: comboBox.curType!=="Theory"
                 validator: IntValidator {
 
                 }
@@ -84,7 +113,7 @@ Control {
         Flickable {
             id: flick
             width: parent.width-10
-            anchors.top: setRow.bottom
+            visible: comboBox.curType==="Theory" ? false : true
             height: Math.min(Math.max(100, textArea.contentHeight+25), 400)
             TextArea.flickable: TextArea {
                 id: textArea
@@ -97,9 +126,9 @@ Control {
 
         Loader {
             id: loader
-            anchors.top: flick.bottom
             width: parent.width-10
             height : childrenRect.height
+        }
         }
 
     }

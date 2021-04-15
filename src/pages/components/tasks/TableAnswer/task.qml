@@ -12,13 +12,6 @@ Control {
             let nod=contentObj['nods']['nod'+i]
             listModel.append({ind: i, nod: nod['name']})
         }
-    }
-    function reset() {
-        for(let i=0;i<listView.count;i++) {
-            listView.itemAtIndex(i).subListMod.clear()
-            listView.itemAtIndex(i).subListMod.append({subInd: 0})
-        }
-    }
     function getObj() {
         let subObj={}
         for(let i=0;i<listView.count;i++) {
@@ -41,14 +34,21 @@ Control {
         obj['score']=(obj['basicScore']*answer(obj)).toFixed(1)
         return obj
     }
+    }
+    function reset() {
+        for(let i=0;i<listView.count;i++) {
+            listView.itemAtIndex(i).subListMod.clear()
+            listView.itemAtIndex(i).subListMod.append({subInd: 0})
+        }
+    }
     function answer(obj) {
         let k=0.00,pk=0.00
         for(let i=0;i<obj['number'];i++) {
             let nod=obj['nods']['nod'+i]['subNods']
             let pnod=obj['pnods']['nod'+i]['subNods']
             let str=[], pstr=[]
-            for(let j=0;j<nod['number'];j++,k++) str.push(nod['subNod'+j])
-            for(let j=0;j<pnod['number'];j++) pstr.push(pnod['subNod'+j])
+            for(let j=0;j<nod['number'];j++,k++) str.push(nod['subNod'+j].trim().toLowerCase())
+            for(let j=0;j<pnod['number'];j++) pstr.push(pnod['subNod'+j].trim().toLowerCase())
             for(let j=0;j<pstr.length;j++) if(str.includes(pstr[j])) { str.splice(str.indexOf(pstr[j]),1); pk++ }
         }
         return pk/k

@@ -1,5 +1,6 @@
 [General]
 lang=ru
-theme=1
+theme=0
 fontPointSize=12
-visibility=2
+visibility=5
+fontsize=12

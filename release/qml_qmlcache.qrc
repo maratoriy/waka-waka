@@ -34,5 +34,9 @@
         <file alias="about.qml">../src/about.qml</file>
         <file alias="pages/components/taskComponents/SymbolsKeyboard.qml">../src/pages/components/taskComponents/SymbolsKeyboard.qml</file>
         <file alias="pages/components/controls/Splash.qml">../src/pages/components/controls/Splash.qml</file>
+        <file alias="pages/components/tasks/Theory/create.qml">../src/pages/components/tasks/Theory/create.qml</file>
+        <file alias="pages/components/tasks/Theory/result.qml">../src/pages/components/tasks/Theory/result.qml</file>
+        <file alias="pages/components/tasks/Theory/task.qml">../src/pages/components/tasks/Theory/task.qml</file>
+        <file alias="help.qml">../src/help.qml</file>
     </qresource>
 </RCC>

@@ -33,5 +33,9 @@
         <file>about.qml</file>
         <file>pages/components/taskComponents/SymbolsKeyboard.qml</file>
         <file>pages/components/controls/Splash.qml</file>
+        <file>pages/components/tasks/Theory/create.qml</file>
+        <file>pages/components/tasks/Theory/result.qml</file>
+        <file>pages/components/tasks/Theory/task.qml</file>
+        <file>help.qml</file>
     </qresource>
 </RCC>

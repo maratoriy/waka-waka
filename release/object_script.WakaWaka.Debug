@@ -3,6 +3,7 @@ debug/main.o
 debug/qmlclipboardadapter.o
 debug/open_qml.o
 debug/home_qml.o
+debug/help_qml.o
 debug/about_qml.o
 debug/create_qml.o
 debug/main_qml.o
@@ -23,6 +24,9 @@ debug/pages_components_tasks_FixedNumber_create_qml.o
 debug/pages_components_tasks_TextAnswer_result_qml.o
 debug/pages_components_tasks_TextAnswer_task_qml.o
 debug/pages_components_tasks_TextAnswer_create_qml.o
+debug/pages_components_tasks_Theory_result_qml.o
+debug/pages_components_tasks_Theory_task_qml.o
+debug/pages_components_tasks_Theory_create_qml.o
 debug/pages_components_tasks_TableAnswer_result_qml.o
 debug/pages_components_tasks_TableAnswer_task_qml.o
 debug/pages_components_tasks_TableAnswer_create_qml.o

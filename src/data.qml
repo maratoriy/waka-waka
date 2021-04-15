@@ -8,6 +8,7 @@ Item {
     property string programName: "WakaWaka"
     property string programVersion: "beta 0.8"
     property bool   deckstopMode: platform===1
+    property bool   debugMode: true
     //настройки
     property alias settings: _settings
     Settings {
@@ -47,11 +48,12 @@ Item {
 
     //список типовёё
     property var typeList: [
+        "Theory",
         "TextAnswer",
         "FixedNumber",
 //        "FourVariants",
         "MultipleVariants",
-        "TableAnswer"
+        "TableAnswer",
     ]
 
     property var symbols: ["∞", "=", "≠", "~", "x", "÷", "!", "∝", "", "<", "≪", ">", "≫", "≤", "≥", "∓", "≅", "≈", "≡", "∀", "∁", "∂", "√", "∛", "∜", "∪", "∩", "∅", "%", "℉", "℃", "∆", "∇", "∃", "∄", "∈", "∋", "←", "↑", "→", "↓", "↔", "∴", "+", "-", "¬", "α", "β", "γ", "δ", "ε", "ϵ", "θ", "ϑ", "μ", "π", "ρ", "σ", "τ", "φ", "ω", "*", "∙", "⋮", "⋯", "⋰", "⋱", "ℵ", "ℶ", "∎", "ι", "κ", "ν", "ξ", "ο", "ϖ", "ϱ", "ς", "τ", "υ", "ϕ", "χ", "ψ", "∡", "♮", "⊥", "∥", "∦", "∟", "⇈", "∑", "∫", "∬", "∭", "↺", "↻", "↜", "↝", "⟹"]
@@ -82,9 +84,9 @@ Item {
             'open'       : "qrc:/images/icons/open.png",
             'create'     : "qrc:/images/icons/create.png",
             'settings'   : "qrc:/images/icons/settings.png",
-            'about'      : "qrc:/images/icons/about.png",
+            'about'      : "qrc:/images/icons/info.svg",
             'rightArrow' : "qrc:/images/icons/rightArrow.svg",
-            'leftArrow' : "qrc:/images/icons/leftArrow.svg"
+            'leftArrow' : "qrc:/images/icons/leftArrow.svg",
         }
     }
 
@@ -103,7 +105,7 @@ Item {
                 'taskComponent': {
                     'question': 'Question',
                     'basicscore': 'Basic score',
-                    'typeList': [ "TextAnswer (russian only)", "FixedNumber", "MultipleVariants","TableAnswer"]
+                    'typeList': [ "Theory","TextAnswer (russian only)", "FixedNumber", "MultipleVariants","TableAnswer"]
                 },
                 'buttons': {
                     'symbkeyboard': 'Open keyboard',
@@ -153,7 +155,8 @@ Item {
                 'home': 'Home',
                 'open': 'Open',
                 'create': 'Create',
-                'about': 'About'
+                'about': 'About',
+                'help': 'Help'
             },
             'settings': {
                 'fullscreen': 'Fullscreen',
@@ -221,7 +224,7 @@ Item {
                 'taskComponent': {
                     'question': 'Вопрос',
                     'basicscore': 'Максимальный балл',
-                    'typeList': [ 'Текст-ответ (русский)', 'Ответ-число с точностью', 'Несколько вариантов', 'Сопоставление (несколько к одному)'],
+                    'typeList': [ 'Теория','Текст-ответ (русский)', 'Ответ-число с точностью', 'Несколько вариантов', 'Сопоставление (несколько к одному)'],
                 },
                 'buttons': {
                     'symbkeyboard': 'Открыть символы',
@@ -272,7 +275,8 @@ Item {
                 'home': 'Главная',
                 'open': 'Открыть',
                 'create': 'Создать',
-                'about': 'О мне'
+                'about': 'Обо мне',
+                'help': 'Помощь'
             },
             'settings': {
                 'fullscreen': 'На полный экран',
@@ -335,8 +339,8 @@ Item {
                 text: "App's header consists of: \n 1- Navigation menu button \n 2- Title label \n 3- Utility buttons \n   3.1- Hide window to taskbar \n   3.2- Min/max windoow \n   3.3- Close app \n   3.4- Help menu button \n   3.5- Settings menu button",
             },
             ru: {
-                name: "Шапка приложения",
-                text: "Шапка приложения: \n 1- Кнопка навигационного меню \n 2- Заголовок страницы \n 3- Кнопки изменения окна \n   3.1- Свернуть \n   3.2- Масштабирование \n   3.3- Закрыть \n   3.4- Кнопка меню помощи \n   3.5- Кнопка панели настроек"
+                name: "Верхняя панель приложения",
+                text: "Верхняя панель приложения: \n 1- Кнопка навигационного меню \n 2- Заголовок страницы \n 3- Кнопки изменения окна \n   3.1- Свернуть \n   3.2- Масштабирование \n   3.3- Закрыть \n   3.4- Кнопка меню помощи \n   3.5- Кнопка панели настроек"
             },
             image: {
                 source: 'qrc:/images/help/window.png',

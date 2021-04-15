@@ -45,6 +45,12 @@ namespace _0x5f__main_qml {
         reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
     };
 }
+namespace _pages_components_tasks_Theory_task_qml { 
+    extern const unsigned char qmlData[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
+    };
+}
 namespace _pages_components_tasks_TableAnswer_result_qml { 
     extern const unsigned char qmlData[];
     const QQmlPrivate::CachedQmlUnit unit = {
@@ -82,6 +88,12 @@ namespace _pages_components_controls_MyTextField_qml {
     };
 }
 namespace _pages_components_tasks_FixedNumber_result_qml { 
+    extern const unsigned char qmlData[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
+    };
+}
+namespace _pages_components_tasks_Theory_result_qml { 
     extern const unsigned char qmlData[];
     const QQmlPrivate::CachedQmlUnit unit = {
         reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
@@ -142,6 +154,18 @@ namespace _pages_components_tasks_FixedNumber_create_qml {
     };
 }
 namespace _pages_components_taskComponents_SymbolsKeyboard_qml { 
+    extern const unsigned char qmlData[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
+    };
+}
+namespace _pages_components_tasks_Theory_create_qml { 
+    extern const unsigned char qmlData[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
+    };
+}
+namespace _0x5f__help_qml { 
     extern const unsigned char qmlData[];
     const QQmlPrivate::CachedQmlUnit unit = {
         reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
@@ -216,6 +240,7 @@ Registry::Registry() {
         resourcePathToCachedUnit.insert(QStringLiteral("/create.qml"), &QmlCacheGeneratedCode::_0x5f__create_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/controls/Splash.qml"), &QmlCacheGeneratedCode::_pages_components_controls_Splash_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/main.qml"), &QmlCacheGeneratedCode::_0x5f__main_qml::unit);
+        resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/tasks/Theory/task.qml"), &QmlCacheGeneratedCode::_pages_components_tasks_Theory_task_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/tasks/TableAnswer/result.qml"), &QmlCacheGeneratedCode::_pages_components_tasks_TableAnswer_result_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/about.qml"), &QmlCacheGeneratedCode::_0x5f__about_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/pages/ResultsPage.qml"), &QmlCacheGeneratedCode::_pages_ResultsPage_qml::unit);
@@ -223,6 +248,7 @@ Registry::Registry() {
         resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/tasks/FixedNumber/task.qml"), &QmlCacheGeneratedCode::_pages_components_tasks_FixedNumber_task_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/controls/MyTextField.qml"), &QmlCacheGeneratedCode::_pages_components_controls_MyTextField_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/tasks/FixedNumber/result.qml"), &QmlCacheGeneratedCode::_pages_components_tasks_FixedNumber_result_qml::unit);
+        resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/tasks/Theory/result.qml"), &QmlCacheGeneratedCode::_pages_components_tasks_Theory_result_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/tasks/TableAnswer/create.qml"), &QmlCacheGeneratedCode::_pages_components_tasks_TableAnswer_create_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/tasks/MultipleVariants/create.qml"), &QmlCacheGeneratedCode::_pages_components_tasks_MultipleVariants_create_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/ResultsTaskComponent.qml"), &QmlCacheGeneratedCode::_pages_components_ResultsTaskComponent_qml::unit);
@@ -233,6 +259,8 @@ Registry::Registry() {
         resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/tasks/TableAnswer/task.qml"), &QmlCacheGeneratedCode::_pages_components_tasks_TableAnswer_task_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/tasks/FixedNumber/create.qml"), &QmlCacheGeneratedCode::_pages_components_tasks_FixedNumber_create_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/taskComponents/SymbolsKeyboard.qml"), &QmlCacheGeneratedCode::_pages_components_taskComponents_SymbolsKeyboard_qml::unit);
+        resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/tasks/Theory/create.qml"), &QmlCacheGeneratedCode::_pages_components_tasks_Theory_create_qml::unit);
+        resourcePathToCachedUnit.insert(QStringLiteral("/help.qml"), &QmlCacheGeneratedCode::_0x5f__help_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/open.qml"), &QmlCacheGeneratedCode::_0x5f__open_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/pages/components/tasks/TextAnswer/result.qml"), &QmlCacheGeneratedCode::_pages_components_tasks_TextAnswer_result_qml::unit);
         resourcePathToCachedUnit.insert(QStringLiteral("/pages/CreatePage.qml"), &QmlCacheGeneratedCode::_pages_CreatePage_qml::unit);
